@@ -40,23 +40,6 @@ const styles = {
     justifyContent: "center",
   },
 
-  // item: {
-  //   width: "30vw",
-  //   height: "30vw",
-  //   margin: "10px",
-  //   backgroundColor: "#d4dfbb",
-
-  //   display: "flex",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   position: "relative",
-  //   borderRadius: "40px",
-  // },
-  // text: {
-  //   position: "absolute",
-  //   textAlign: "center",
-  // },
-
   img: {
     position: "fixed",
     right: "-25%",
