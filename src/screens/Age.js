@@ -36,6 +36,5 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    margin: "",
   },
 };
