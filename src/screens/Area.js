@@ -3,7 +3,7 @@ import { Large } from "../components/Large";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 
-export const Age = () => {
+export const Area = () => {
   return (
     <div style={styles.body}>
       <Header />
