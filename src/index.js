@@ -7,7 +7,7 @@ import { Age } from "./screens/Age";
 import { Area } from "./screens/Area";
 import { ParkName } from "./screens/ParkName";
 import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
-
+import { List } from "./screens/List";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -19,6 +19,7 @@ root.render(
       <Route path="Age" element={<Age />} />
       <Route path="Area" element={<Area />} />
       <Route path="ParkName" element={<ParkName />} />
+      <Route path="List" element={<List />} />
       {/* </React.StrictMode> */}
       <Route
         path="*"

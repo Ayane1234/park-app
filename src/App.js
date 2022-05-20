@@ -27,6 +27,8 @@ function App() {
         <Link to="/Area">Area</Link>
         <br></br>
         <Link to="/ParkName">ParkName</Link>
+        <br></br>
+        <Link to="/List">List</Link>
       </nav>
       <Outlet />
     </div>
