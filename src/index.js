@@ -5,6 +5,7 @@ import { Home } from "./screens/Home";
 import { Search } from "./screens/Playset";
 import { Age } from "./screens/Age";
 import { Area } from "./screens/Area";
+import { ParkName } from "./screens/ParkName";
 import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,6 +18,7 @@ root.render(
       <Route path="Playset" element={<Search />} />
       <Route path="Age" element={<Age />} />
       <Route path="Area" element={<Area />} />
+      <Route path="ParkName" element={<ParkName />} />
       {/* </React.StrictMode> */}
       <Route
         path="*"
