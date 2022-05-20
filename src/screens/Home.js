@@ -2,7 +2,6 @@ import React from "react";
 import Circle from "../img/circle.png";
 import Circle2 from "../img/circle2.png";
 import { Item } from "../components/Item";
-
 export const Home = () => {
   return (
     <div style={styles.body}>
