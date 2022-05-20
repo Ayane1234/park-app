@@ -18,7 +18,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
-    borderRadius: "20px",
+    borderRadius: "30px",
   },
   text: {
     position: "absolute",
