@@ -12,7 +12,7 @@ export const Age = () => {
         <Large text="３−６歳" />
       </section>
 
-      <Button />
+      <Button style={styles.button} />
     </div>
   );
 };
@@ -33,6 +33,9 @@ const styles = {
     width: "100%",
     height: "auto",
     display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
+    margin: "",
   },
 };
