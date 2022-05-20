@@ -8,7 +8,7 @@ export const ParkName = () => {
     <div style={styles.body}>
       <Header />
       <section style={styles.section}>
-        <textarea placeholder="公園名を入力"></textarea>
+        <textarea style={styles.textarea} placeholder="公園名を入力"></textarea>
       </section>
 
       <Button style={styles.button} />
@@ -35,5 +35,13 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  textarea: {
+    width: "80%",
+    height: "10vh",
+    border: "none",
+    textAlign: "center",
+    fontSize: "20px",
   },
 };
