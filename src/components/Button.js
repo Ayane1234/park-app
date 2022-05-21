@@ -13,5 +13,7 @@ const styles = {
     borderRadius: "30px",
     border: "none",
     fontSize: "18px",
+    position: "fixed",
+    bottom: 30,
   },
 };
