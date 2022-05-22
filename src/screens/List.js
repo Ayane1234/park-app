@@ -1,20 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Header2 } from "../components/Header2";
 
 export const List = () => {
   return (
     <div style={styles.body}>
-      <section style={styles.section}>
-        <div style={styles.card}>
-          <p>東調布公園</p>
-          <p>大田区南雪谷５丁目１３−１</p>
-          <p>調布</p>
-          <ul style={styles.ul}>
-            <li style={styles.li}>ぶらんこ</li>
-            <li style={styles.li}>滑り台</li>
-            <li style={styles.li}>スプリング遊具</li>
-          </ul>
-        </div>
-      </section>
+      <Header2 />
+      <Link to="/ParkDetail">
+        <section style={styles.section}>
+          <div style={styles.card}>
+            <p>東調布公園</p>
+            <p>大田区南雪谷５丁目１３−１</p>
+            <p>調布</p>
+            <ul style={styles.ul}>
+              <li style={styles.li}>ぶらんこ</li>
+              <li style={styles.li}>滑り台</li>
+              <li style={styles.li}>スプリング遊具</li>
+            </ul>
+          </div>
+        </section>
+      </Link>
     </div>
   );
 };
@@ -29,7 +34,7 @@ const styles = {
     // flexDirection: "column",
     // alignItems: "center",
     // justifyContent: "center",
-    // paddingTop: 30,
+    paddingTop: 100,
   },
   card: {
     width: "80%",

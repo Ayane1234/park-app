@@ -1,7 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Button = () => {
-  return <button style={styles.button}>さがす</button>;
+  return (
+    <Link to="/List" style={styles.link}>
+      <button style={styles.button}>さがす</button>
+    </Link>
+  );
 };
 
 const styles = {
@@ -15,5 +20,10 @@ const styles = {
     fontSize: "18px",
     position: "fixed",
     bottom: 30,
+    // left: 75,
+  },
+  link: {
+    display: "flex",
+    justifyContent: "center",
   },
 };

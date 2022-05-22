@@ -2,20 +2,29 @@ import React from "react";
 import Circle from "../img/circle.png";
 import Circle2 from "../img/circle2.png";
 import { Item } from "../components/Item";
+import { Link } from "react-router-dom";
 export const Home = () => {
   return (
     <div style={styles.body}>
       <img src={Circle} style={styles.img} />
       <div>
         <section style={styles.section}>
-          <Item text="遊具からさがす" />
+          <Link to="/Playset">
+            <Item text="遊具からさがす" />
+          </Link>
 
-          <Item text="年齢からさがす" />
+          <Link to="/Age">
+            <Item text="年齢からさがす" />
+          </Link>
         </section>
         <section style={styles.section}>
-          <Item text="地域からさがす" />
+          <Link to="/Area">
+            <Item text="地域からさがす" />
+          </Link>
 
-          <Item text="公園名からさがす" />
+          <Link to="/ParkName">
+            <Item text="公園名からさがす" />
+          </Link>
         </section>
       </div>
       <img src={Circle2} style={styles.img2} />
