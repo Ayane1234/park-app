@@ -31,8 +31,12 @@ const styles = {
     height: "10%",
   },
   arrow: {
-    margin: "5px",
-    fontSize: 40,
+    marginLeft: 10,
+    marginRight: "auto",
+    fontSize: "2em",
+    backgroundColor: "white",
+    borderRadius: "50%",
+    padding: "10px",
   },
 
   home: {

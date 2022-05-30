@@ -53,7 +53,7 @@ export const List = () => {
 
                 <div style={styles.playsetContents}>
                   {data.playset.map((playitem) => {
-                    return <li style={styles.li}>{playitem}</li>;
+                    return <p style={styles.playset}>{playitem}</p>;
                   })}
                 </div>
               </div>
@@ -84,7 +84,7 @@ const styles = {
   },
   card: {
     width: "100%",
-    height: "auto",
+    height: "25%",
     backgroundColor: "white",
     borderRadius: "10px",
     marginBottom: "15px",
@@ -111,23 +111,23 @@ const styles = {
   },
 
   park: {
-    fontSize: "1.5em",
+    fontSize: "1.6em",
   },
 
   address: {
-    fontSize: "0.8em",
+    fontSize: "1em",
   },
-  li: {
-    display: "inline-block",
-    padding: "5px",
-
+  playset: {
+    display: "block",
+    padding: "1px 10px 1px 10px",
+    textAlign: "center",
     backgroundColor: "#CCB5A5",
-    margin: "0 10px",
-    listStyle: "none",
+    margin: "2px 5px 1px 0px",
+    // marginBottom: "0px",
     borderRadius: "30px",
+    color: "white",
   },
   playsetContents: {
-    width: "100%",
     display: "flex",
     flexWrap: "wrap",
   },
