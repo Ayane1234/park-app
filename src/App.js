@@ -28,7 +28,7 @@ function App() {
         <br></br>
         <Link to="/ParkName">ParkName</Link>
         <br></br>
-        <Link to="/List">List</Link>
+        <Link to="/ParkList">ParkList</Link>
         <br></br>
         <Link to="/ParkDetail">ParkDetail</Link>
       </nav>

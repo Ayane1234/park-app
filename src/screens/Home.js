@@ -1,7 +1,7 @@
 import React from "react";
 import Circle from "../img/circle.png";
 import Circle2 from "../img/circle2.png";
-import { Item } from "../components/Item";
+import { SearchItemButton } from "../components/SearchItemButton";
 import { Link } from "react-router-dom";
 export const Home = () => {
   return (
@@ -10,20 +10,20 @@ export const Home = () => {
       <div>
         <section style={styles.section}>
           <Link to="/Playset">
-            <Item text="遊具からさがす" />
+            <SearchItemButton text="遊具からさがす" />
           </Link>
 
           <Link to="/Age">
-            <Item text="年齢からさがす" />
+            <SearchItemButton text="年齢からさがす" />
           </Link>
         </section>
         <section style={styles.section}>
           <Link to="/Area">
-            <Item text="地域からさがす" />
+            <SearchItemButton text="地域からさがす" />
           </Link>
 
           <Link to="/ParkName">
-            <Item text="公園名からさがす" />
+            <SearchItemButton text="公園名からさがす" />
           </Link>
         </section>
       </div>

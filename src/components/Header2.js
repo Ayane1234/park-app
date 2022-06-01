@@ -28,11 +28,15 @@ const styles = {
     left: 0,
     top: 0,
     width: "100vw",
-    height: "10%",
+    height: 60,
   },
   arrow: {
-    margin: "5px",
-    fontSize: 40,
+    marginLeft: 20,
+    marginRight: "auto",
+    fontSize: "2em",
+    backgroundColor: "white",
+    borderRadius: "50%",
+    padding: "10px",
   },
 
   home: {
