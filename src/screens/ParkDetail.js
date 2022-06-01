@@ -105,7 +105,7 @@ const styles = {
     height: "10%",
   },
   arrow: {
-    marginLeft: 10,
+    marginLeft: 20,
     marginRight: "auto",
     fontSize: "2em",
     backgroundColor: "white",
@@ -138,12 +138,11 @@ const styles = {
     marginLeft: "auto",
   },
   area: {
-    // display: "inline-block",
     backgroundColor: "#e4af9b",
-    borderRadius: "20px",
+    borderRadius: "10px",
     textAlign: "center",
     padding: "1px",
-    // display: "block",
+    color: "white",
   },
   parkName: {
     fontSize: "2em",
