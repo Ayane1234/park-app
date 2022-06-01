@@ -28,10 +28,10 @@ const styles = {
     left: 0,
     top: 0,
     width: "100vw",
-    height: "10%",
+    height: 60,
   },
   arrow: {
-    marginLeft: 10,
+    marginLeft: 20,
     marginRight: "auto",
     fontSize: "2em",
     backgroundColor: "white",
