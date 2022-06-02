@@ -23,13 +23,7 @@ export const Playset = () => {
         <Small text1="ジャングル" text2="ジム" />
         <Small text1="ロープ" text2="ウェイ" />
       </section>
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> feature/ParkList-components
-=======
->>>>>>> 14ffab68c1decafeaca1475c8a06ebcbc1e78032
       <Button />
     </div>
   );
