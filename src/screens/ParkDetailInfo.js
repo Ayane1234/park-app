@@ -8,7 +8,7 @@ import Baby from "../img/baby.png";
 import ParkImgOther from "../img/parkImg1.png";
 import ParkImgOther2 from "../img/parkImg2.png";
 
-export const ParkDetail = () => {
+export const ParkDetailInfo = () => {
   const navigate = useNavigate();
   const datas = [
     {
@@ -93,7 +93,6 @@ const styles = {
     width: "100vw",
     height: "100vh",
     position: "relative",
-    // backgroundColor: "#f3eed5",
   },
   headerDetail: {
     display: "flex",
@@ -104,15 +103,19 @@ const styles = {
     width: "100vw",
     height: "10%",
   },
+
+  section: {
+    display: "flex",
+    padding: "10px",
+  },
   arrow: {
-    marginLeft: 20,
+    marginLeft: 10,
     marginRight: "auto",
     fontSize: "2em",
     backgroundColor: "white",
     borderRadius: "50%",
     padding: "10px",
   },
-
   home: {
     fontSize: "2em",
     padding: "10px",
@@ -122,7 +125,6 @@ const styles = {
     backgroundColor: "white",
     borderRadius: "50%",
   },
-
   main: {
     width: "100%",
     height: "25%",
@@ -138,11 +140,12 @@ const styles = {
     marginLeft: "auto",
   },
   area: {
+    // display: "inline-block",
     backgroundColor: "#e4af9b",
-    borderRadius: "10px",
+    borderRadius: "20px",
     textAlign: "center",
     padding: "1px",
-    color: "white",
+    // display: "block",
   },
   parkName: {
     fontSize: "2em",

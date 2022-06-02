@@ -3,7 +3,7 @@ import { Small } from "../components/Small";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 
-export const Search = () => {
+export const Playset = () => {
   return (
     <div style={styles.body}>
       <Header />
@@ -24,9 +24,12 @@ export const Search = () => {
         <Small text1="ロープ" text2="ウェイ" />
       </section>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> feature/ParkList-components
+=======
+>>>>>>> 14ffab68c1decafeaca1475c8a06ebcbc1e78032
       <Button />
     </div>
   );

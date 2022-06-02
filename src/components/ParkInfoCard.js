@@ -21,15 +21,11 @@ const styles = {
     width: "100%",
     height: "25%",
     backgroundColor: "white",
-    borderRadius: "10px",
+    borderRadius: "20px",
     marginBottom: "15px",
   },
 
   parkContents: {
     padding: "15px",
   },
-
-  // address: {
-  //   fontSize: "1em",
-  // },
 };

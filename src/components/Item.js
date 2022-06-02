@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SearchItemButton = (props) => {
+export const Item = (props) => {
   return (
     <div style={styles.item}>
       <p style={styles.text}>{props.text}</p>
