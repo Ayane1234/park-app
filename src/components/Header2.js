@@ -43,7 +43,7 @@ const styles = {
     fontSize: "2em",
     padding: "10px",
     marginLeft: "auto",
-    marginRight: 10,
+    marginRight: 20,
     color: "#CCB5A5",
   },
 };

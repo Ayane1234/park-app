@@ -2,29 +2,26 @@ import React from "react";
 import Circle from "../img/circle.png";
 import Circle2 from "../img/circle2.png";
 import { SearchItemButton } from "../components/SearchItemButton";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <div style={styles.body}>
       <img src={Circle} style={styles.img} />
       <div>
         <section style={styles.section}>
-          <Link to="/Playset">
-            <SearchItemButton text="遊具からさがす" />
-          </Link>
+          <SearchItemButton
+            text="遊具からさがす"
+            onClick={() => navigate("/Playset")}
+          />
 
-          <Link to="/Age">
-            <SearchItemButton text="年齢からさがす" />
-          </Link>
+          <SearchItemButton text="年齢からさがす" />
         </section>
         <section style={styles.section}>
-          <Link to="/Area">
-            <SearchItemButton text="地域からさがす" />
-          </Link>
+          <SearchItemButton text="地域からさがす" />
 
-          <Link to="/ParkName">
-            <SearchItemButton text="公園名からさがす" />
-          </Link>
+          <SearchItemButton text="公園名からさがす" />
         </section>
       </div>
       <img src={Circle2} style={styles.img2} />

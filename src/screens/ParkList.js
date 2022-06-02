@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Header2 } from "../components/Header2";
 import { useNavigate } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
