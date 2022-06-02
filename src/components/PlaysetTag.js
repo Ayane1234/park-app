@@ -1,7 +1,6 @@
 import React from "react";
 
 export const PlaysetTag = (props) => {
-  console.log("PlayTagのprops:", props);
   return (
     <div style={styles.playsetSection}>
       {props.data.data.playset.map((playitem) => {

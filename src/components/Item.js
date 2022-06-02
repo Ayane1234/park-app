@@ -1,24 +1,25 @@
 import React from "react";
 
-export const Large = (props) => {
+export const Item = (props) => {
   return (
-    <div style={styles.large}>
+    <div style={styles.item}>
       <p style={styles.text}>{props.text}</p>
     </div>
   );
 };
 
 const styles = {
-  large: {
-    width: "60vw",
-    height: "25vw",
+  item: {
+    width: "30vw",
+    height: "30vw",
     margin: "10px",
-    backgroundColor: "white",
+    backgroundColor: "#d4dfbb",
+
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
-    borderRadius: "30px",
+    borderRadius: "40px",
   },
   text: {
     position: "absolute",
