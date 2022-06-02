@@ -1,21 +1,21 @@
 import React from "react";
 import Circle from "../img/circle.png";
 import Circle2 from "../img/circle2.png";
-import { Item } from "../components/Item";
+import { SearchItemButton } from "../components/SearchItemButton";
 export const Home = () => {
   return (
     <div style={styles.body}>
       <img src={Circle} style={styles.img} />
       <div>
         <section style={styles.section}>
-          <Item text="遊具からさがす" />
+          <SearchItemButton text="遊具からさがす" />
 
-          <Item text="年齢からさがす" />
+          <SearchItemButton text="年齢からさがす" />
         </section>
         <section style={styles.section}>
-          <Item text="地域からさがす" />
+          <SearchItemButton text="地域からさがす" />
 
-          <Item text="公園名からさがす" />
+          <SearchItemButton text="公園名からさがす" />
         </section>
       </div>
       <img src={Circle2} style={styles.img2} />
