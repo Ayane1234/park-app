@@ -1,5 +1,4 @@
 import React from "react";
-import { Large } from "../components/Large";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 
@@ -10,7 +9,8 @@ export const ParkName = () => {
       <section style={styles.section}>
         <textarea style={styles.textarea} placeholder="公園名を入力"></textarea>
       </section>
-      <Button />
+
+      <Button style={styles.button} />
     </div>
   );
 };

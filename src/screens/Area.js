@@ -13,7 +13,7 @@ export const Area = () => {
         <Large text="蒲田・羽田地区" />
       </section>
 
-      <Button />
+      <Button style={styles.button} />
     </div>
   );
 };

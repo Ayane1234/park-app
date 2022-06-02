@@ -20,10 +20,5 @@ const styles = {
     fontSize: "18px",
     position: "fixed",
     bottom: 30,
-    // left: 75,
-  },
-  link: {
-    display: "flex",
-    justifyContent: "center",
   },
 };

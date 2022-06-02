@@ -28,8 +28,4 @@ const styles = {
   parkContents: {
     padding: "15px",
   },
-
-  // address: {
-  //   fontSize: "1em",
-  // },
 };
