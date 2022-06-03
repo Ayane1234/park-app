@@ -1,5 +1,5 @@
 import React from "react";
-import { Small } from "../components/Small";
+import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 
@@ -8,20 +8,17 @@ export const Playset = () => {
     <div style={styles.body}>
       <Header />
       <section style={styles.section}>
-        <Small text1="お砂場" />
-        <Small text1="ぶらんこ" />
-      </section>
-      <section style={styles.section}>
-        <Small text1="滑り台" />
-        <Small text1="スプリング" text2="遊具" />
-      </section>
-      <section style={styles.section}>
-        <Small text1="鉄棒" />
-        <Small text1="ローラー" text2="スライダー" />
-      </section>
-      <section style={styles.section}>
-        <Small text1="ジャングル" text2="ジム" />
-        <Small text1="ロープ" text2="ウェイ" />
+        <PlaysetSearchButton text1="お砂場" />
+        <PlaysetSearchButton text1="ぶらんこ" />
+
+        <PlaysetSearchButton text1="滑り台" />
+        <PlaysetSearchButton text1="スプリング" text2="遊具" />
+
+        <PlaysetSearchButton text1="鉄棒" />
+        <PlaysetSearchButton text1="ローラー" text2="スライダー" />
+
+        <PlaysetSearchButton text1="ジャングル" text2="ジム" />
+        <PlaysetSearchButton text1="ロープ" text2="ウェイ" />
       </section>
 
       <Button />
@@ -31,20 +28,19 @@ export const Playset = () => {
 
 const styles = {
   body: {
+    paddingTop: 70,
     width: "100vw",
     height: "100vh",
     position: "relative",
     backgroundColor: "#f3eed5",
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     justifyContent: "center",
-    paddingTop: 30,
   },
   section: {
-    width: "100%",
-    height: "auto",
+    width: "75%",
+    height: "75%",
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "center",
   },
 };

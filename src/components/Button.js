@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Button = () => {
+  const navigate = useNavigate();
   return (
-    <Link to="/List" style={styles.link}>
-      <button style={styles.button}>さがす</button>
-    </Link>
+    // <Link to="/List" style={styles.link}>
+    <button style={styles.button} onClick={() => navigate("/ParkList")}>
+      さがす
+    </button>
+    // </Link>
   );
 };
 

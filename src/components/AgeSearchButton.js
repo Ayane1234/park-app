@@ -1,18 +1,18 @@
 import React from "react";
 
-export const Large = (props) => {
+export const AgeSearchButton = (props) => {
   return (
-    <div style={styles.large}>
+    <div style={styles.AgeSearchButton}>
       <p style={styles.text}>{props.text}</p>
     </div>
   );
 };
 
 const styles = {
-  large: {
+  AgeSearchButton: {
     width: "60vw",
     height: "25vw",
-    margin: "10px",
+    margin: "30px",
     backgroundColor: "white",
     display: "flex",
     alignItems: "center",

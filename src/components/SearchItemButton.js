@@ -2,8 +2,12 @@ import React from "react";
 
 export const SearchItemButton = (props) => {
   return (
-    <div style={styles.item}>
-      <p style={styles.text}>{props.text}</p>
+    <div style={styles.item} onClick={props.onClick}>
+      <p style={styles.text}>
+        {props.text1}
+        <br></br>
+        {props.text2}
+      </p>
     </div>
   );
 };

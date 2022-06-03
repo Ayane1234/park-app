@@ -2,10 +2,10 @@ import React from "react";
 import { Arrow } from "./Arrow";
 import { HomeIcon } from "./HomeIcon";
 
-export const Header2 = () => {
+export const ParkDetailsHeader = () => {
   return (
     <div>
-      <header style={styles.header2}>
+      <header style={styles.ParkDetailsHeader}>
         <Arrow />
 
         <HomeIcon />
@@ -15,8 +15,7 @@ export const Header2 = () => {
 };
 
 const styles = {
-  header2: {
-    backgroundColor: "white",
+  ParkDetailsHeader: {
     display: "flex",
     alignItems: "center",
     position: "fixed",

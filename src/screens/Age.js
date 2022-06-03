@@ -1,5 +1,5 @@
 import React from "react";
-import { Large } from "../components/Large";
+import { AgeSearchButton } from "../components/AgeSearchButton";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 
@@ -7,10 +7,10 @@ export const Age = () => {
   return (
     <div style={styles.body}>
       <Header />
-      <section style={styles.section}>
-        <Large text="１−３歳" />
-        <Large text="３−６歳" />
-      </section>
+      {/* <section style={styles.section}> */}
+      <AgeSearchButton text="１−３歳" />
+      <AgeSearchButton text="３−６歳" />
+      {/* </section> */}
 
       <Button style={styles.button} />
     </div>
@@ -27,13 +27,13 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 30,
+    // paddingTop: 70,
   },
   section: {
     width: "100%",
     height: "auto",
     display: "flex",
-    flexDirection: "column",
+    // flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },

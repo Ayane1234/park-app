@@ -1,5 +1,5 @@
 import React from "react";
-import { Large } from "../components/Large";
+import { AreaSearchButton } from "../components/AreaSearchButton";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 
@@ -7,11 +7,11 @@ export const Area = () => {
   return (
     <div style={styles.body}>
       <Header />
-      <section style={styles.section}>
-        <Large text="大森地区" />
-        <Large text="調布地区" />
-        <Large text="蒲田・羽田地区" />
-      </section>
+      {/* <section style={styles.section}> */}
+      <AreaSearchButton text="大森地区" />
+      <AreaSearchButton text="調布地区" />
+      <AreaSearchButton text="蒲田・羽田地区" />
+      {/* </section> */}
 
       <Button style={styles.button} />
     </div>
@@ -28,7 +28,7 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 30,
+    // paddingTop: 70,
   },
   section: {
     width: "100%",

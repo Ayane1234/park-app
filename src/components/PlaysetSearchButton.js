@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Small = (props) => {
+export const PlaysetSearchButton = (props) => {
   return (
-    <div style={styles.small}>
+    <div style={styles.PlaysetSearchButton}>
       <p style={styles.text}>
         {props.text1}
         <br></br>
@@ -13,16 +13,16 @@ export const Small = (props) => {
 };
 
 const styles = {
-  small: {
-    width: "25vw",
-    height: "25vw",
-    margin: "10px",
+  PlaysetSearchButton: {
+    width: "100px",
+    height: "100px",
+    margin: "0px 10px 0 10px ",
     backgroundColor: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
-    borderRadius: "20px",
+    borderRadius: "30px",
   },
   text: {
     position: "absolute",

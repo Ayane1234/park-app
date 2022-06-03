@@ -2,20 +2,47 @@ import React from "react";
 import Circle from "../img/circle.png";
 import Circle2 from "../img/circle2.png";
 import { SearchItemButton } from "../components/SearchItemButton";
+import { useNavigate } from "react-router-dom";
+
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <div style={styles.body}>
       <img src={Circle} style={styles.img} />
       <div>
         <section style={styles.section}>
-          <SearchItemButton text="遊具からさがす" />
+          <SearchItemButton
+            text1="遊具から"
+            text2="さがす"
+            onClick={() => {
+              navigate("/Playset");
+            }}
+          />
 
-          <SearchItemButton text="年齢からさがす" />
+          <SearchItemButton
+            text1="年齢から"
+            text2="さがす"
+            onClick={() => {
+              navigate("/Age");
+            }}
+          />
         </section>
         <section style={styles.section}>
-          <SearchItemButton text="地域からさがす" />
+          <SearchItemButton
+            text1="地域から"
+            text2="さがす"
+            onClick={() => {
+              navigate("/Area");
+            }}
+          />
 
-          <SearchItemButton text="公園名からさがす" />
+          <SearchItemButton
+            text1="公園名から"
+            text2="さがす"
+            onClick={() => {
+              navigate("/ParkName");
+            }}
+          />
         </section>
       </div>
       <img src={Circle2} style={styles.img2} />
@@ -42,12 +69,11 @@ const styles = {
   img: {
     position: "fixed",
     right: "-25%",
-    top: "-15%",
+    top: "-25%",
   },
   img2: {
     position: "fixed",
-    bottom: "-10%",
+    bottom: "-20%",
     left: "-40%",
-    // transform: "translate(-30%,-75%)",
   },
 };
