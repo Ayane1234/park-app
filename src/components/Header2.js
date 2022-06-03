@@ -1,19 +1,14 @@
 import React from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import { useNavigate } from "react-router-dom";
+import { Arrow } from "./Arrow";
+import { HomeIcon } from "./HomeIcon";
 
 export const Header2 = () => {
-  const navigate = useNavigate();
   return (
     <div>
       <header style={styles.header2}>
-        <ArrowBackIcon style={styles.arrow} onClick={() => navigate(-1)} />
+        <Arrow />
 
-        <HomeRoundedIcon
-          style={styles.home}
-          onClick={() => navigate("/Home")}
-        />
+        <HomeIcon />
       </header>
     </div>
   );
@@ -29,21 +24,5 @@ const styles = {
     top: 0,
     width: "100vw",
     height: 60,
-  },
-  arrow: {
-    marginLeft: 20,
-    marginRight: "auto",
-    fontSize: "2em",
-    backgroundColor: "white",
-    borderRadius: "50%",
-    padding: "10px",
-  },
-
-  home: {
-    fontSize: "2em",
-    padding: "10px",
-    marginLeft: "auto",
-    marginRight: 10,
-    color: "#CCB5A5",
   },
 };

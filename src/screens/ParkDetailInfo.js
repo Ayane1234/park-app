@@ -1,7 +1,8 @@
 import React from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import { useNavigate } from "react-router-dom";
+import { Arrow } from "../components/Arrow";
+import { HomeIcon } from "../components/HomeIcon";
+import { ParkDetailsHeader } from "../components/ParkDetailsHeader";
+
 import ParkImg from "../img/park.png";
 import Child from "../img/boy.png";
 import Baby from "../img/baby.png";
@@ -9,7 +10,6 @@ import ParkImgOther from "../img/parkImg1.png";
 import ParkImgOther2 from "../img/parkImg2.png";
 
 export const ParkDetailInfo = () => {
-  const navigate = useNavigate();
   const datas = [
     {
       park: "洗足池公園",
@@ -27,14 +27,11 @@ export const ParkDetailInfo = () => {
 
   return (
     <div style={styles.body}>
-      <header style={styles.headerDetail}>
-        <ArrowBackIcon style={styles.arrow} onClick={() => navigate(-1)} />
-
-        <HomeRoundedIcon
-          style={styles.home}
-          onClick={() => navigate("/Home")}
-        />
-      </header>
+      <ParkDetailsHeader />
+      {/* <header style={styles.headerDetail}>
+        <Arrow />
+        <HomeIcon />
+      </header> */}
       <body>
         <img src={ParkImg} alt="メイン画像" style={styles.main} />
         <section style={styles.parkContents}>
@@ -94,36 +91,19 @@ const styles = {
     height: "100vh",
     position: "relative",
   },
-  headerDetail: {
-    display: "flex",
-    alignItems: "center",
-    position: "fixed",
-    left: 0,
-    top: 0,
-    width: "100vw",
-    height: "10%",
-  },
+  //   headerDetail: {
+  //     display: "flex",
+  //     alignItems: "center",
+  //     position: "fixed",
+  //     left: 0,
+  //     top: 0,
+  //     width: "100vw",
+  //     height: "10%",
+  //   },
 
   section: {
     display: "flex",
     padding: "10px",
-  },
-  arrow: {
-    marginLeft: 10,
-    marginRight: "auto",
-    fontSize: "2em",
-    backgroundColor: "white",
-    borderRadius: "50%",
-    padding: "10px",
-  },
-  home: {
-    fontSize: "2em",
-    padding: "10px",
-    marginLeft: "auto",
-    marginRight: 10,
-    color: "#CCB5A5",
-    backgroundColor: "white",
-    borderRadius: "50%",
   },
   main: {
     width: "100%",
