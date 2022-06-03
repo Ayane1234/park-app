@@ -12,7 +12,7 @@ const styles = {
     marginLeft: 20,
     marginTop: 10,
     marginRight: "auto",
-    fontSize: "2em",
+    fontSize: "30px",
     backgroundColor: "white",
     borderRadius: "50%",
     padding: "10px",

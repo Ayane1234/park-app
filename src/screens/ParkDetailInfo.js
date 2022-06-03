@@ -1,6 +1,5 @@
 import React from "react";
-import { Arrow } from "../components/Arrow";
-import { HomeIcon } from "../components/HomeIcon";
+import { ParkBasicInfoSection } from "../components/ParkBasicInfoSection";
 import { ParkDetailsHeader } from "../components/ParkDetailsHeader";
 
 import ParkImg from "../img/park.png";
@@ -28,22 +27,10 @@ export const ParkDetailInfo = () => {
   return (
     <div style={styles.body}>
       <ParkDetailsHeader />
-      {/* <header style={styles.headerDetail}>
-        <Arrow />
-        <HomeIcon />
-      </header> */}
       <body>
-        <img src={ParkImg} alt="メイン画像" style={styles.main} />
-        <section style={styles.parkContents}>
-          <div style={styles.parkName}>東調布公園</div>
-          <div style={styles.areaContent}>
-            <div style={styles.area}>調布</div>
-          </div>
-        </section>
-        <section style={styles.addressContens}>
-          <address style={styles.address}>東京都大田区南雪谷5-13-1</address>
-          <div>25,229㎡</div>
-        </section>
+        {/* <img src={ParkImg} alt="メイン画像" style={styles.main} /> */}
+        <ParkBasicInfoSection />
+
         <section style={styles.playsetWrapper}>
           <div style={styles.item}>遊具</div>
           <div style={styles.playsetContents}>
@@ -90,16 +77,8 @@ const styles = {
     width: "100vw",
     height: "100vh",
     position: "relative",
+    marginTop: 60,
   },
-  //   headerDetail: {
-  //     display: "flex",
-  //     alignItems: "center",
-  //     position: "fixed",
-  //     left: 0,
-  //     top: 0,
-  //     width: "100vw",
-  //     height: "10%",
-  //   },
 
   section: {
     display: "flex",
@@ -110,35 +89,6 @@ const styles = {
     height: "25%",
   },
 
-  parkContents: {
-    display: "grid",
-    gridTemplateColumns: "70% 30%",
-  },
-
-  areaContent: {
-    width: "75%",
-    marginLeft: "auto",
-  },
-  area: {
-    // display: "inline-block",
-    backgroundColor: "#e4af9b",
-    borderRadius: "20px",
-    textAlign: "center",
-    padding: "1px",
-    // display: "block",
-  },
-  parkName: {
-    fontSize: "2em",
-  },
-  address: {
-    fontStyle: "normal",
-  },
-  addressContens: {
-    borderBottomStyle: "solid",
-    borderWidth: "thin",
-    paddingBottom: "10px",
-    borderColor: "#CCB5A5",
-  },
   playsetWrapper: {
     borderBottomStyle: "solid",
     borderWidth: "thin",
