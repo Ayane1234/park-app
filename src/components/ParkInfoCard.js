@@ -4,13 +4,13 @@ import { PlaysetTag } from "./PlaysetTag";
 import { ParkSummaryInfo } from "./ParkSummaryInfo";
 
 export const ParkInfoCard = (props) => {
-  console.log("props:", props);
+  console.log("ParkInfoCardのprops:", props);
   return (
     <div style={styles.card} onClick={props.onClick}>
       <div style={styles.parkContents}>
-        <ParkSummaryInfo data={props} />
+        <ParkSummaryInfo data={props.data} />
 
-        <PlaysetTag data={props} />
+        <PlaysetTag data={props.data} />
       </div>
     </div>
   );

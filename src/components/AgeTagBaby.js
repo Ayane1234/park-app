@@ -18,8 +18,10 @@ const styles = {
   icon: {
     width: "25px",
     height: "auto",
+    color: "black",
   },
   age: {
     fontSize: "13px",
+    // color: "gray",
   },
 };
