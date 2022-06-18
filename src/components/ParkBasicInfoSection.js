@@ -5,7 +5,6 @@ export const ParkBasicInfoSection = () => {
   return (
     <section style={styles.ParkBasicInfoSection}>
       <ParkBasicInfo />
-
       <AreaTagDetail />
     </section>
   );

@@ -1,10 +1,15 @@
 import React from "react";
 
 export const PlaysetTag = (props) => {
+  console.log("PlaysetTagのprops:", props);
   return (
     <div style={styles.playsetSection}>
-      {props.data.data.playset.map((playitem) => {
-        return <p style={styles.playset}>{playitem}</p>;
+      {props.data.playset.map((playitem, index) => {
+        return (
+          <p style={styles.playset} key={index}>
+            {playitem}
+          </p>
+        );
       })}
     </div>
   );

@@ -34,13 +34,14 @@ export const ParkList = () => {
     <div style={styles.body}>
       <Header2 />
       <section style={styles.parkListSection}>
-        {datas.map((data) => {
+        {datas.map((data, index) => {
           return (
             <ParkInfoCard
               data={data}
               onClick={() => {
                 navigate("/ParkDetail");
               }}
+              key={index}
             />
           );
         })}
