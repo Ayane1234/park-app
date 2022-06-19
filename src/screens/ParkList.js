@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Header2 } from "../components/Header2";
 import { useNavigate } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
+import { db } from "../firebase/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 export const ParkList = () => {
-  // 公園名
-  // 住所
-  // エリア
-  // 遊具種類タグ
+  const [parks, setParks] = useState([]);
+  useEffect(() => {
+    const parkData = collection(db, "ParkDetailData");
+    console.log("parkData:", parkData);
+    getDocs(parkData).then((snapShot) => {
+      console.log("snapShot:", snapShot);
+      console.log("docs:", snapShot.docs);
+      console.log(
+        "docsをmapして一つずつ表示するスプレッド:",
+        snapShot.docs.map((doc) => ({ ...doc.data() }))
+      );
+      // console.log(
+      //   "docsをmapして一つずつ表示するスプレッドじゃない:",
+      //   snapShot.docs.map((doc) => doc.data())
+      // );
+      // setParks(snapShot.docs.map((doc) => ({ ...doc.data() })))
+    });
+  }, []);
+
   const navigate = useNavigate();
   const datas = [
     {
