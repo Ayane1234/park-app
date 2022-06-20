@@ -19,7 +19,7 @@ export const ParkInfoCard = (props) => {
 const styles = {
   card: {
     width: "100%",
-    height: "25%",
+    height: "23vh",
     backgroundColor: "white",
     borderRadius: "20px",
     marginBottom: "15px",
