@@ -6,7 +6,7 @@ export const ParkSummaryInfo = (props) => {
   return (
     <div>
       <div style={styles.parkSummaryInfo}>
-        <div style={styles.park}>{props.data.park}</div>
+        <div style={styles.park}>{props.data.name}</div>
         <AreaTag area={props.data.area} />
       </div>
       <div style={styles.address}>{props.data.address}</div>
@@ -17,7 +17,7 @@ export const ParkSummaryInfo = (props) => {
 const styles = {
   parkSummaryInfo: {
     display: "grid",
-    gridTemplateColumns: "78% 22%",
+    gridTemplateColumns: "75% 25%",
   },
 
   park: {

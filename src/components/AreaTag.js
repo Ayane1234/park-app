@@ -15,7 +15,7 @@ const styles = {
     backgroundColor: "#e4af9b",
     borderRadius: "10px",
     textAlign: "center",
-    padding: "1px",
+    padding: "2px",
     color: "white",
     width: "100%",
   },
