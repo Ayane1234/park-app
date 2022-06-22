@@ -3,8 +3,11 @@ import { ParkBasicInfoSection } from "../components/ParkBasicInfoSection";
 import { ParkDetailsHeader } from "../components/ParkDetailsHeader";
 import { PlaysetInfoSection } from "../components/PlaysetInfoSection";
 import { ParkOtherInfoSection } from "../components/ParkOtherInfoSection";
+import { useLocation } from "react-router-dom";
 
 export const ParkDetailInfo = () => {
+  const location = useLocation();
+  console.log("location:", location.state.info);
   const datas = [
     {
       park: "洗足池公園",
@@ -23,7 +26,7 @@ export const ParkDetailInfo = () => {
   return (
     <div style={styles.body}>
       <ParkDetailsHeader />
-      <body>
+      <div>
         {/* <img src={ParkImg} alt="メイン画像" style={styles.main} /> */}
         <ParkBasicInfoSection />
         <PlaysetInfoSection />
@@ -41,7 +44,7 @@ export const ParkDetailInfo = () => {
             style={styles.otherImg}
           /> */}
         </section>
-      </body>
+      </div>
     </div>
   );
 };
