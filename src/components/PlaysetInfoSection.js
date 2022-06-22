@@ -3,21 +3,20 @@ import { PlaysetTagDetail } from "./PlaysetTagDetail";
 import { AgeTagBaby } from "./AgeTagBaby";
 import { AgeTagChild } from "./AgeTagChild";
 
-export const PlaysetInfoSection = () => {
+export const PlaysetInfoSection = (props) => {
+  console.log("PlaysetInfoSectionのprops:", props);
   return (
     <div>
       <section style={styles.playsetWrapper}>
         <div style={styles.sectionTitle}>遊具</div>
         <div style={styles.playsetContents}>
-          <PlaysetTagDetail playset={"ぶらんこ"} />
-          <PlaysetTagDetail playset={"スプリング遊具"} />
-          <PlaysetTagDetail playset={"ジャングルジム"} />
-          <PlaysetTagDetail playset={"お砂場"} />
-          <PlaysetTagDetail playset={"滑り台"} />
+          {props.data.playset.map((playset, id) => {
+            return <PlaysetTagDetail playset={playset} key={id} />;
+          })}
         </div>
         <section style={styles.ageWrapper}>
-          <AgeTagBaby />
-          <AgeTagChild />
+          <AgeTagBaby data={props.data} />
+          <AgeTagChild data={props.data} />
         </section>
       </section>
     </div>

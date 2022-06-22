@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate, Link } from "react-router-dom";
 import { PlaysetTag } from "./PlaysetTag";
 import { ParkSummaryInfo } from "./ParkSummaryInfo";
 
@@ -19,7 +19,7 @@ export const ParkInfoCard = (props) => {
 const styles = {
   card: {
     width: "100%",
-    height: "23vh",
+    height: "155px",
     backgroundColor: "white",
     borderRadius: "20px",
     marginBottom: "15px",
