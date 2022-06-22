@@ -1,11 +1,12 @@
 import React from "react";
 
-export const ParkBasicInfo = () => {
+export const ParkBasicInfo = (props) => {
+  console.log("ParkBasicInfoのprops:", props);
   return (
     <div style={styles.ParkBasicInfo}>
-      <div style={styles.parkName}>東調布公園</div>
-      <div style={styles.address}>東京都大田区南雪谷5-13-1</div>
-      <div style={styles.parkSize}>25,229㎡</div>
+      <div style={styles.parkName}>{props.basicInfoData.name}</div>
+      <div style={styles.address}>{props.basicInfoData.address}</div>
+      <div style={styles.parkSize}>{props.basicInfoData.size}㎡</div>
     </div>
   );
 };

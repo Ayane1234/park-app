@@ -1,6 +1,7 @@
 import React from "react";
 
 export const PlaysetTagDetail = (props) => {
+  console.log("PlaysetTagDetailのprops:", props);
   return (
     <div>
       <p style={styles.playset}>{props.playset}</p>

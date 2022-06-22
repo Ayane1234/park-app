@@ -8,29 +8,17 @@ import { useLocation } from "react-router-dom";
 export const ParkDetailInfo = () => {
   const location = useLocation();
   console.log("location:", location.state.info);
-  const datas = [
-    {
-      park: "洗足池公園",
-      address: "東京都大田区南千束2丁目14ー5",
-      area: "調布",
-      playset: [
-        "ぶらんこ",
-        "スプリング遊具",
-        "ジャングルジム",
-        "お砂場",
-        "滑り台",
-      ],
-    },
-  ];
+  const detailnfo = location.state.info;
+  console.log("detailInfo:", detailnfo);
 
   return (
     <div style={styles.body}>
       <ParkDetailsHeader />
-      <div>
+      <div style={styles.section}>
         {/* <img src={ParkImg} alt="メイン画像" style={styles.main} /> */}
-        <ParkBasicInfoSection />
-        <PlaysetInfoSection />
-        <ParkOtherInfoSection />
+        <ParkBasicInfoSection data={detailnfo} />
+        <PlaysetInfoSection data={detailnfo} />
+        <ParkOtherInfoSection other={detailnfo.other} />
 
         <section>
           {/* <img
@@ -58,8 +46,9 @@ const styles = {
   },
 
   section: {
-    display: "flex",
-    padding: "10px",
+    width: "90%",
+    top: 60,
+    // position: "absolute",
   },
   main: {
     width: "100%",
