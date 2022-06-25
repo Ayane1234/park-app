@@ -4,7 +4,6 @@ import { PlaysetTag } from "./PlaysetTag";
 import { ParkSummaryInfo } from "./ParkSummaryInfo";
 
 export const ParkInfoCard = (props) => {
-  console.log("ParkInfoCardのprops:", props);
   return (
     <div style={styles.card} onClick={props.onClick}>
       <div style={styles.parkContents}>

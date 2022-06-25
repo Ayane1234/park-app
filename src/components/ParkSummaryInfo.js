@@ -2,7 +2,6 @@ import React from "react";
 import { AreaTag } from "./AreaTag";
 
 export const ParkSummaryInfo = (props) => {
-  // console.log("ParkSummaryInfoのprops:", props);
   return (
     <div>
       <div style={styles.parkSummaryInfo}>
