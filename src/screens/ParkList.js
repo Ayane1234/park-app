@@ -9,19 +9,13 @@ export const ParkList = () => {
   const [parks, setParks] = useState([]);
 
   useEffect(() => {
-    const parkData = collection(db, "ParkDetailData");
-    console.log("parkData:", parkData);
-    getDocs(parkData).then((snapShot) => {
-      console.log("snapShot:", snapShot);
-      // console.log(
-      //   "id:",
-      //   snapShot.docs.map((doc) => doc.id)
-      // );
-      // console.log(
-      //   "docsをmapして一つずつ表示するスプレッド:",
-      //   snapShot.docs.map((doc) => ({ ...doc.data() }))
-      // setIds(snapShot.docs.map((doc) => ({ ...doc.id })));
-      setParks(snapShot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    const getParkData = collection(db, "ParkDetailData");
+    getDocs(getParkData).then((snapShot) => {
+      const parkDatasList = snapShot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setParks(parkDatasList);
     });
   }, []);
 

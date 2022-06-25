@@ -48,6 +48,7 @@ const styles = {
   section: {
     width: "90%",
     top: 60,
+    padding: "10px",
     // position: "absolute",
   },
   main: {
