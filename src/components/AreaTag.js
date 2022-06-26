@@ -2,13 +2,16 @@ import React from "react";
 
 export const AreaTag = (props) => {
   return (
-    <div style={styles.areaContent}>
+    <div style={styles.areaWrapper}>
       <div style={styles.area}>{props.area}</div>
     </div>
   );
 };
 
 const styles = {
+  areaWrapper: {
+    height: "50%",
+  },
   area: {
     fontSize: "13px",
     backgroundColor: "#e4af9b",
@@ -17,10 +20,5 @@ const styles = {
     padding: "2px",
     color: "white",
     width: "100%",
-  },
-  areaContent: {
-    // width: "75%",
-    height: "50%",
-    // marginLeft: "auto",
   },
 };

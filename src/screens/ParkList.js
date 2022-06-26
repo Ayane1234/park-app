@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Header2 } from "../components/Header2";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
 import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
