@@ -1,7 +1,6 @@
 import React from "react";
 
 export const AreaTagDetail = (props) => {
-  console.log("AreaTagDetailのprops:", props);
   return (
     <div style={styles.areaWrapper}>
       <div style={styles.area}>{props.area}</div>
