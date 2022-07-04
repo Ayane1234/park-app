@@ -3,7 +3,9 @@ import React from "react";
 export const AreaSearchButton = (props) => {
   return (
     <div style={styles.AreaSearchButton}>
-      <p style={styles.text}>{props.text}</p>
+      <p style={styles.text} onClick={props.onClick}>
+        {props.text}
+      </p>
     </div>
   );
 };

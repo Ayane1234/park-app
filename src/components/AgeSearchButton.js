@@ -3,7 +3,9 @@ import React from "react";
 export const AgeSearchButton = (props) => {
   return (
     <div style={styles.AgeSearchButton}>
-      <p style={styles.text}>{props.text}</p>
+      <p style={styles.text} onClick={props.onClick}>
+        {props.text}
+      </p>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { Age } from "./screens/Age";
 import { ParkName } from "./screens/ParkName";
 import { ParkList } from "./screens/ParkList";
 import { ParkDetailInfo } from "./screens/ParkDetailInfo";
+import { TestData } from "./screens/testdata";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="ParkName" element={<ParkName />} />
           <Route path="ParkList" element={<ParkList />} />
           <Route path="ParkDetail" element={<ParkDetailInfo />} />
+          <Route path="TestData" element={<TestData />} />
           <Route
             path="*"
             element={
