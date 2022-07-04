@@ -3,7 +3,6 @@ import BabyGrayIcon from "../img/baby_gray.svg";
 import BabyPinkIcon from "../img/baby_pink.svg";
 
 export const AgeTagBaby = (props) => {
-  console.log("AgeTagBabyのprops:", props);
   const babyTrue = props.data.baby;
 
   return (

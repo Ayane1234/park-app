@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Header2 } from "../components/Header2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
 import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 export const ParkList = () => {
+  // useState(parks)の初期化
   const [parks, setParks] = useState([]);
+
+  // useNavigateの初期化
+  // 公園詳細画面へのルーティングの設定
+  const navigate = useNavigate();
+  const toParkDetailInfo = (park) => {
+    // クリックした{park}を遷移先に渡す
+    navigate("/ParkDetail", { state: { info: park } });
+  };
+
+  // useLocationの初期化
+  const location = useLocation();
+
+  // locationをコンソールに出力
+  console.log("location:", location.state);
 
   useEffect(() => {
     const getParkData = collection(db, "ParkDetailData");
@@ -16,13 +31,25 @@ export const ParkList = () => {
         ...doc.data(),
       }));
       setParks(parkDatasList);
+      console.log("parks:", parks);
     });
   }, []);
 
-  const navigate = useNavigate();
-  const toParkDetailInfo = (park) => {
-    navigate("/ParkDetail", { state: { info: park } });
-  };
+  // 地域フィルター関数
+  const areaName = location.state;
+  const areaFilterData = parks.filter((park) => park.area === areaName);
+  console.log("areaFilterData:", areaFilterData);
+  // setParks(areaFilterData);
+
+  // ベイビーフィルター関数
+  const babyFilter = true;
+  const babyFilterData = parks.filter((park) => park.baby === babyFilter);
+  console.log("babyFilter:", babyFilterData);
+
+  // 子どもフィルター
+  const childFilter = true;
+  const childFilterData = parks.filter((park) => park.child === childFilter);
+  console.log("childFilter:", childFilterData);
 
   return (
     <div style={styles.body}>
