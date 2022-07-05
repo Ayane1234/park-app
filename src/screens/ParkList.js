@@ -8,6 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
 export const ParkList = () => {
   // useState(parks)の初期化
   const [parks, setParks] = useState([]);
+  const [areaName, setAreaName] = useState();
 
   // useNavigateの初期化
   // 公園詳細画面へのルーティングの設定
@@ -23,6 +24,7 @@ export const ParkList = () => {
   // locationをコンソールに出力
   console.log("location:", location.state);
 
+  // firestoreから全データの取得
   useEffect(() => {
     const getParkData = collection(db, "ParkDetailData");
     getDocs(getParkData).then((snapShot) => {
@@ -31,15 +33,18 @@ export const ParkList = () => {
         ...doc.data(),
       }));
       setParks(parkDatasList);
-      console.log("parks:", parks);
+      setAreaName(location.state);
     });
   }, []);
 
   // 地域フィルター関数
-  const areaName = location.state;
-  const areaFilterData = parks.filter((park) => park.area === areaName);
-  console.log("areaFilterData:", areaFilterData);
-  // setParks(areaFilterData);
+  console.log("areaName:", areaName);
+  useEffect(() => {
+    const areaFilterData = parks.filter((park) => park.area === areaName);
+    // console.log("areaFilterData:", areaFilterData);
+    setParks(areaFilterData);
+    // console.log("areaFilter内のparks:", parks);
+  }, [areaName]);
 
   // ベイビーフィルター関数
   const babyFilter = true;

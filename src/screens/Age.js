@@ -1,18 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { AgeSearchButton } from "../components/AgeSearchButton";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export const Age = () => {
+  // useNavigateの初期化
+  const navigate = useNavigate();
+
+  // useState(age)の初期化
+  const [age, setAge] = useState();
+
+  // 公園リストへのルーティングの設定
+  const toParkList = () => {
+    navigate("/ParkList", { state: { age: "baby" } });
+  };
+  // よくわかんないけど、子どもか赤ちゃんかを渡して、遷移先で赤ちゃんを取ったらbabyFilterをtrueにする？
+  // babyボタン
+  const babyButttonClick = () => {
+    setAge();
+  };
+  const childButttonClick = () => {
+    setAge();
+  };
   return (
     <div style={styles.body}>
       <Header />
-      {/* <section style={styles.section}> */}
+
       <AgeSearchButton text="１−３歳" />
       <AgeSearchButton text="３−６歳" />
-      {/* </section> */}
 
-      <Button style={styles.button} />
+      <Button
+        style={styles.button}
+        onClick={() => {
+          toParkList();
+        }}
+      />
     </div>
   );
 };
