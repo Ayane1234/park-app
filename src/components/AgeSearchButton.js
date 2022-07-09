@@ -1,10 +1,10 @@
 import React from "react";
 
-export const AgeSearchButton = (props) => {
+export const AgeSearchButton = ({ text, onClick }) => {
   return (
     <div style={styles.AgeSearchButton}>
-      <p style={styles.text} onClick={props.onClick}>
-        {props.text}
+      <p style={styles.text} onClick={onClick}>
+        {text}
       </p>
     </div>
   );

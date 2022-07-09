@@ -9,25 +9,55 @@ export const Age = () => {
   const navigate = useNavigate();
 
   // useState(age)の初期化
-  const [age, setAge] = useState();
+  const [age, setAge] = useState([]);
+  const [child, setChild] = useState([]);
+  const [baby, setBaby] = useState([]);
+  const [active, setActive] = useState(false);
 
   // 公園リストへのルーティングの設定
   const toParkList = () => {
+    const ageFilter = baby.concat(child);
+    setAge(ageFilter);
     navigate("/ParkList", {
       state: { dataFilter: age, screenName: "年齢絞り込み" },
     });
   };
 
+  const isTrue = () => {
+    setActive(!active);
+  };
+
+  // console.log("age:", age);
+  const array = [];
+
   // babyボタン
   const babyButttonClick = () => {
-    setAge("baby");
-    //判定できるもの？propsに渡す？押したよってtrueまたはfalseを渡して、
-    //ボタンでスタイルを判定
-  };
-  const childButttonClick = () => {
-    setAge("child");
+    if (!baby.length) {
+      const babyFilter = [...array, "baby"];
+      setBaby(babyFilter);
+    } else {
+      const noneBabyFilter = baby.filter((babyFilter) => babyFilter !== "baby");
+      setBaby(noneBabyFilter);
+    }
+    //   //判定できるもの？propsに渡す？押したよってtrueまたはfalseを渡して、
+    //   //ボタンでスタイルを判定
   };
   console.log("age:", age);
+  console.log("baby:", baby);
+  console.log("child:", child);
+
+  const childButttonClick = () => {
+    if (!child.length) {
+      const childFilter = [...array, "child"];
+      setChild(childFilter);
+    } else {
+      const noneChildFilter = child.filter(
+        (childFilter) => childFilter !== "child"
+      );
+      setChild(noneChildFilter);
+    }
+  };
+  // console.log("age:", age);
   return (
     <div style={styles.body}>
       <Header />
@@ -65,13 +95,11 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    // paddingTop: 70,
   },
   section: {
     width: "100%",
     height: "auto",
     display: "flex",
-    // flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
