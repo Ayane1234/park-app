@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { db } from "../firebase/firebase";
 import {
   collection,
@@ -7,35 +7,39 @@ import {
   QuerySnapshot,
   where,
 } from "firebase/firestore";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const TestData = () => {
   const [parks, setParks] = useState([]);
+  const [babyFilter, setBabyFilter] = useState();
+  const location = { state: "baby" };
 
   useEffect(() => {
     const getParkData = collection(db, "ParkDetailData");
-    // console.log("getParkData:", getParkData);
+
     getDocs(getParkData).then((snapShot) => {
-      // console.log("snapShot:", snapShot);
       const parkDatasList = snapShot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      // console.log("parkDataList:", parkDatasList);
+
       setParks(parkDatasList);
-
-      // console.log("parks:", parks);
     });
-  }, []);
-  console.log("useEffectの外のparks:", parks);
-  const areaName = "大森";
-  // const age = "1-3歳";
-  const areaFilterData = parks.filter(
-    (park) =>
-      // console.log("park:", park.area === "調布");
-      park.area === areaName
-  );
 
-  console.log("areaFilterData:", areaFilterData);
+    // //ageの分岐
+    // if (location.state === "baby") {
+    //   console.log("赤ちゃん向け有り");
+    //   setBabyFilter(true);
+    // } else {
+    //   return;
+    // }
+  }, []);
+
+  console.log("[parks]", parks);
+
+  const baby = true;
+  const babyFilterD = parks.filter((park) => park.age === baby);
+  console.log("[babyFilterD]", babyFilterD);
 
   // const ageFilterData = parks.filter();
   // const getParkData = collection(db, "ParkDetailData");

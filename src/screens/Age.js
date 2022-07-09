@@ -13,22 +13,37 @@ export const Age = () => {
 
   // 公園リストへのルーティングの設定
   const toParkList = () => {
-    navigate("/ParkList", { state: { age: "baby" } });
+    navigate("/ParkList", {
+      state: { dataFilter: age, screenName: "年齢絞り込み" },
+    });
   };
-  // よくわかんないけど、子どもか赤ちゃんかを渡して、遷移先で赤ちゃんを取ったらbabyFilterをtrueにする？
+
   // babyボタン
   const babyButttonClick = () => {
-    setAge();
+    setAge("baby");
+    //判定できるもの？propsに渡す？押したよってtrueまたはfalseを渡して、
+    //ボタンでスタイルを判定
   };
   const childButttonClick = () => {
-    setAge();
+    setAge("child");
   };
+  console.log("age:", age);
   return (
     <div style={styles.body}>
       <Header />
 
-      <AgeSearchButton text="１−３歳" />
-      <AgeSearchButton text="３−６歳" />
+      <AgeSearchButton
+        text="１−３歳"
+        onClick={() => {
+          babyButttonClick();
+        }}
+      />
+      <AgeSearchButton
+        text="３−６歳"
+        onClick={() => {
+          childButttonClick();
+        }}
+      />
 
       <Button
         style={styles.button}

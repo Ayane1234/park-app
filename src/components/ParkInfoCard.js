@@ -2,13 +2,13 @@ import React from "react";
 import { PlaysetTag } from "./PlaysetTag";
 import { ParkSummaryInfo } from "./ParkSummaryInfo";
 
-export const ParkInfoCard = (props) => {
+export const ParkInfoCard = ({ data, onClick }) => {
   return (
-    <div style={styles.card} onClick={props.onClick}>
+    <div style={styles.card} onClick={onClick}>
       <div style={styles.parkContents}>
-        <ParkSummaryInfo data={props.data} />
+        <ParkSummaryInfo data={data} />
 
-        <PlaysetTag data={props.data} />
+        <PlaysetTag data={data} />
       </div>
     </div>
   );
