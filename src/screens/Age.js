@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { AgeSearchButton } from "../components/AgeSearchButton";
+import React, { useEffect, useState } from "react";
+import { AgeFilterButton } from "../components/AgeFilterButton";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 import { useNavigate } from "react-router-dom";
@@ -12,67 +12,73 @@ export const Age = () => {
   const [age, setAge] = useState([]);
   const [child, setChild] = useState([]);
   const [baby, setBaby] = useState([]);
-  const [active, setActive] = useState(false);
+  const [isBabyFilterActive, setIsBabyFilterActive] = useState(false);
+  const [isChildFilterActive, setIsChildFilterActive] = useState(false);
+
+  const array = [];
+
+  // useEffect
+  useEffect(() => {
+    const ageFilter = baby.concat(child);
+    setAge(ageFilter);
+  }, [baby, child]);
 
   // 公園リストへのルーティングの設定
   const toParkList = () => {
-    const ageFilter = baby.concat(child);
-    setAge(ageFilter);
     navigate("/ParkList", {
       state: { dataFilter: age, screenName: "年齢絞り込み" },
     });
   };
-
-  const isTrue = () => {
-    setActive(!active);
-  };
-
   // console.log("age:", age);
-  const array = [];
+  // console.log("baby:", baby);
+  // console.log("child:", child);
 
   // babyボタン
   const babyButttonClick = () => {
     if (!baby.length) {
       const babyFilter = [...array, "baby"];
       setBaby(babyFilter);
+      setIsBabyFilterActive(true);
     } else {
       const noneBabyFilter = baby.filter((babyFilter) => babyFilter !== "baby");
       setBaby(noneBabyFilter);
+      setIsBabyFilterActive(false);
     }
     //   //判定できるもの？propsに渡す？押したよってtrueまたはfalseを渡して、
     //   //ボタンでスタイルを判定
   };
-  console.log("age:", age);
-  console.log("baby:", baby);
-  console.log("child:", child);
 
   const childButttonClick = () => {
     if (!child.length) {
       const childFilter = [...array, "child"];
       setChild(childFilter);
+      setIsChildFilterActive(true);
     } else {
       const noneChildFilter = child.filter(
         (childFilter) => childFilter !== "child"
       );
       setChild(noneChildFilter);
+      setIsChildFilterActive(false);
     }
   };
-  // console.log("age:", age);
+
   return (
     <div style={styles.body}>
       <Header />
 
-      <AgeSearchButton
+      <AgeFilterButton
         text="１−３歳"
         onClick={() => {
           babyButttonClick();
         }}
+        bool={isBabyFilterActive}
       />
-      <AgeSearchButton
+      <AgeFilterButton
         text="３−６歳"
         onClick={() => {
           childButttonClick();
         }}
+        bool={isChildFilterActive}
       />
 
       <Button

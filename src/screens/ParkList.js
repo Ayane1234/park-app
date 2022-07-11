@@ -23,13 +23,13 @@ export const ParkList = () => {
   const location = useLocation();
 
   // locationをコンソールに出力
-  console.log("location.state:", location.state);
+  // console.log("location.state:", location.state);
 
   // firestoreから全データの取得
   useEffect(() => {
     const getParkData = collection(db, "ParkDetailData");
     const { dataFilter, screenName } = location.state;
-    console.log("data:", screenName);
+    // console.log("data:", screenName);
 
     getDocs(getParkData).then((snapShot) => {
       const parkDatasList = snapShot.docs.map((doc) => ({
@@ -44,9 +44,13 @@ export const ParkList = () => {
         }
       }
       if (screenName === "年齢絞り込み") {
-        if (dataFilter === "baby" || "child") {
-          setIsAge(true);
-        }
+        dataFilter.map((ageFilter) => {
+          if (ageFilter === "baby" || "child") {
+            // console.log("年齢分岐通ったよ");
+            console.log("ageFilter:", ageFilter);
+            setIsAge(true);
+          }
+        });
       }
     });
   }, []);
@@ -59,23 +63,24 @@ export const ParkList = () => {
   }, [areaName]);
 
   // ベイビーフィルター関数
-  // console.log("babyFilter:", babyFilter);
   useEffect(() => {
     const { dataFilter } = location.state;
-    if (dataFilter === "baby") {
-      const babyFilterData = parks.filter((park) => park.baby === true);
-      setParks(babyFilterData);
-    } else if (dataFilter === "child") {
+    console.log("dataFilter:", dataFilter);
+    if (dataFilter.find((data) => data === "baby")) {
+      if (dataFilter.find((data) => data === "child")) {
+        return;
+      } else {
+        const babyFilterData = parks.filter((park) => park.baby === true);
+        setParks(babyFilterData);
+        // console.log("ベイビーだけ");
+      }
+    } else {
       const childFilterData = parks.filter((park) => park.child === true);
       setParks(childFilterData);
+
+      // console.log("子供だけ");
     }
-
-    console.log("ベイビーフィルターのparks:", parks);
   }, [isAge]);
-
-  // 子どもフィルター
-
-  // console.log("childFilter:", childFilterData);
 
   return (
     <div style={styles.body}>
