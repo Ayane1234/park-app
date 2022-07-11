@@ -1,9 +1,10 @@
 import React from "react";
 
-export const AreaSearchButton = ({ text, onClick, bool }) => {
+export const AgeFilterButton = ({ text, onClick, bool }) => {
+  // console.log("bool:", bool);
   return (
     <div
-      style={bool ? styles.AreaFilterButtonTrue : styles.AreaFilterButtonFalse}
+      style={bool ? styles.AgeFilterButtonTrue : styles.AgeFilterButtonFalse}
     >
       <p style={styles.text} onClick={onClick}>
         {text}
@@ -13,11 +14,12 @@ export const AreaSearchButton = ({ text, onClick, bool }) => {
 };
 
 const styles = {
-  AreaFilterButtonTrue: {
+  AgeFilterButtonTrue: {
     width: "60vw",
     height: "25vw",
-    margin: "10px",
+    margin: "30px",
     backgroundColor: "#e4af9b",
+    color: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -28,15 +30,16 @@ const styles = {
     position: "absolute",
     textAlign: "center",
   },
-  AreaFilterButtonFalse: {
+  AgeFilterButtonFalse: {
     width: "60vw",
     height: "25vw",
-    margin: "10px",
+    margin: "30px",
     backgroundColor: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
     borderRadius: "30px",
+    cursor: "pointer",
   },
 };

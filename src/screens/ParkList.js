@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Header2 } from "../components/Header2";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
@@ -6,8 +6,10 @@ import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 export const ParkList = () => {
-  // useState(parks)の初期化
+  // useStateの初期化
   const [parks, setParks] = useState([]);
+  const [areaName, setAreaName] = useState();
+  const [isAge, setIsAge] = useState();
 
   // useNavigateの初期化
   // 公園詳細画面へのルーティングの設定
@@ -21,35 +23,64 @@ export const ParkList = () => {
   const location = useLocation();
 
   // locationをコンソールに出力
-  console.log("location:", location.state);
+  // console.log("location.state:", location.state);
 
+  // firestoreから全データの取得
   useEffect(() => {
     const getParkData = collection(db, "ParkDetailData");
+    const { dataFilter, screenName } = location.state;
+    // console.log("data:", screenName);
+
     getDocs(getParkData).then((snapShot) => {
       const parkDatasList = snapShot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setParks(parkDatasList);
-      console.log("parks:", parks);
+
+      if (screenName === "地域絞り込み") {
+        if (dataFilter === "大森" || "蒲田・羽田" || "調布") {
+          setAreaName(dataFilter);
+        }
+      }
+      if (screenName === "年齢絞り込み") {
+        dataFilter.map((ageFilter) => {
+          if (ageFilter === "baby" || "child") {
+            // console.log("年齢分岐通ったよ");
+            console.log("ageFilter:", ageFilter);
+            setIsAge(true);
+          }
+        });
+      }
     });
   }, []);
 
   // 地域フィルター関数
-  const areaName = location.state;
-  const areaFilterData = parks.filter((park) => park.area === areaName);
-  console.log("areaFilterData:", areaFilterData);
-  // setParks(areaFilterData);
+  // console.log("areaName:", areaName);
+  useEffect(() => {
+    const areaFilterData = parks.filter((park) => park.area === areaName);
+    setParks(areaFilterData);
+  }, [areaName]);
 
   // ベイビーフィルター関数
-  const babyFilter = true;
-  const babyFilterData = parks.filter((park) => park.baby === babyFilter);
-  console.log("babyFilter:", babyFilterData);
+  useEffect(() => {
+    const { dataFilter } = location.state;
+    console.log("dataFilter:", dataFilter);
+    if (dataFilter.find((data) => data === "baby")) {
+      if (dataFilter.find((data) => data === "child")) {
+        return;
+      } else {
+        const babyFilterData = parks.filter((park) => park.baby === true);
+        setParks(babyFilterData);
+        // console.log("ベイビーだけ");
+      }
+    } else {
+      const childFilterData = parks.filter((park) => park.child === true);
+      setParks(childFilterData);
 
-  // 子どもフィルター
-  const childFilter = true;
-  const childFilterData = parks.filter((park) => park.child === childFilter);
-  console.log("childFilter:", childFilterData);
+      // console.log("子供だけ");
+    }
+  }, [isAge]);
 
   return (
     <div style={styles.body}>
@@ -80,7 +111,6 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     paddingTop: 60,
-    // backgroundSize: "cover",
   },
   parkListSection: {
     width: "90%",
