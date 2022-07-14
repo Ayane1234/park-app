@@ -30,55 +30,25 @@ export const Area = () => {
   // 大森ボタン
   const omoriButtonClick = () => {
     setArea("大森");
-    if (
-      isOmoriActive === false &&
-      isChofuActive === false &&
-      isHanedaActive === false
-    ) {
-      setIsOmoriActive(true);
-      setIsChofuActive(false);
-      setIsHanedaActive(false);
-    } else if (isChofuActive || isHanedaActive === true) {
-      setIsOmoriActive(true);
-      setIsChofuActive(false);
-      setIsHanedaActive(false);
-    }
+    setIsOmoriActive(true);
+    setIsChofuActive(false);
+    setIsHanedaActive(false);
   };
 
   // 調布ボタン
   const chofuButtonClick = () => {
     setArea("調布");
-    if (
-      isOmoriActive === false &&
-      isChofuActive === false &&
-      isHanedaActive === false
-    ) {
-      setIsOmoriActive(false);
-      setIsChofuActive(true);
-      setIsHanedaActive(false);
-    } else if (isOmoriActive || isHanedaActive === true) {
-      setIsOmoriActive(false);
-      setIsChofuActive(true);
-      setIsHanedaActive(false);
-    }
+    setIsOmoriActive(false);
+    setIsChofuActive(true);
+    setIsHanedaActive(false);
   };
 
   // 蒲田・羽田ボタン
   const kamataButtonClick = () => {
     setArea("蒲田・羽田");
-    if (
-      isOmoriActive === false &&
-      isChofuActive === false &&
-      isHanedaActive === false
-    ) {
-      setIsOmoriActive(false);
-      setIsChofuActive(false);
-      setIsHanedaActive(true);
-    } else if (isOmoriActive || isChofuActive === true) {
-      setIsOmoriActive(false);
-      setIsChofuActive(false);
-      setIsHanedaActive(true);
-    }
+    setIsOmoriActive(false);
+    setIsChofuActive(false);
+    setIsHanedaActive(true);
   };
 
   return (
