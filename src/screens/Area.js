@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AreaSearchButton } from "../components/AreaSearchButton";
 import { Header } from "../components/Header";
-import { Button } from "../components/Button";
+import { SearchButton } from "../components/SearchButton";
 import { useNavigate } from "react-router-dom";
 
 export const Area = () => {
@@ -21,10 +21,10 @@ export const Area = () => {
       state: { dataFilter: area, screenName: "地域絞り込み" },
     });
   };
-  console.log("area:", area);
-  console.log("isOmoriActive:", isOmoriActive);
-  console.log("isChofuActive:", isChofuActive);
-  console.log("isHanedaActive:", isHanedaActive);
+  // console.log("area:", area);
+  // console.log("isOmoriActive:", isOmoriActive);
+  // console.log("isChofuActive:", isChofuActive);
+  // console.log("isHanedaActive:", isHanedaActive);
 
   // console.log("omoriActive:", isOmoriActive);
   // 大森ボタン
@@ -71,7 +71,7 @@ export const Area = () => {
         bool={isHanedaActive}
       />
 
-      <Button
+      <SearchButton
         style={styles.button}
         onClick={() => {
           toParkList(area);

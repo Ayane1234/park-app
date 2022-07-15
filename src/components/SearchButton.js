@@ -1,15 +1,15 @@
 import React from "react";
 
-export const Button = (props) => {
+export const SearchButton = ({ onClick }) => {
   return (
-    <button style={styles.button} onClick={props.onClick}>
+    <button style={styles.searchButton} onClick={onClick}>
       さがす
     </button>
   );
 };
 
 const styles = {
-  button: {
+  searchButton: {
     width: "55%",
     height: "70px",
     margin: "20px",

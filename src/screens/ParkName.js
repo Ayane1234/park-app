@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
-import { Button } from "../components/Button";
+import { SearchButton } from "../components/SearchButton";
 
 export const ParkName = () => {
+  const [parkName, setParkName] = useState();
+  const [input, setInput] = useState();
+  const navigate = useNavigate();
+  console.log("input:", input);
+
+  useEffect(() => {
+    setParkName(input);
+  }, [input]);
+
+  const toParkList = () => {
+    navigate("/ParkList", {
+      state: { dataFilter: parkName, screenName: "公園名絞り込み" },
+    });
+  };
+
+  const handeChange = (event) => setInput(event.target.value);
   return (
     <div style={styles.body}>
       <Header />
       <section style={styles.section}>
-        <textarea style={styles.textarea} placeholder="公園名を入力"></textarea>
+        <textarea
+          style={styles.textarea}
+          value={input}
+          onChange={handeChange}
+          placeholder="公園名を入力"
+        ></textarea>
       </section>
 
-      <Button style={styles.button} />
+      <SearchButton style={styles.button} onClick={() => toParkList()} />
     </div>
   );
 };
