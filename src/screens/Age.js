@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AgeFilterButton } from "../components/AgeFilterButton";
 import { Header } from "../components/Header";
-import { Button } from "../components/Button";
+import { SearchButton } from "../components/SearchButton";
 import { useNavigate } from "react-router-dom";
 
 export const Age = () => {
@@ -81,7 +81,7 @@ export const Age = () => {
         bool={isChildFilterActive}
       />
 
-      <Button
+      <SearchButton
         style={styles.button}
         onClick={() => {
           toParkList();

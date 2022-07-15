@@ -1,7 +1,7 @@
 import React from "react";
 import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
-import { Button } from "../components/Button";
+import { SearchButton } from "../components/SearchButton";
 
 export const Playset = () => {
   return (
@@ -21,7 +21,7 @@ export const Playset = () => {
         <PlaysetSearchButton text1="ロープ" text2="ウェイ" />
       </section>
 
-      <Button />
+      <SearchButton />
     </div>
   );
 };

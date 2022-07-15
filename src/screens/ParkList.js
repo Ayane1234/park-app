@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Header2 } from "../components/Header2";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
@@ -10,6 +10,7 @@ export const ParkList = () => {
   const [parks, setParks] = useState([]);
   const [areaName, setAreaName] = useState();
   const [isAge, setIsAge] = useState();
+  const [parkName, setParkName] = useState();
 
   // useNavigateの初期化
   // 公園詳細画面へのルーティングの設定
@@ -23,7 +24,7 @@ export const ParkList = () => {
   const location = useLocation();
 
   // locationをコンソールに出力
-  // console.log("location.state:", location.state);
+  console.log("location.state:", location.state);
 
   // firestoreから全データの取得
   useEffect(() => {
@@ -40,6 +41,7 @@ export const ParkList = () => {
 
       if (screenName === "地域絞り込み") {
         if (dataFilter === "大森" || "蒲田・羽田" || "調布") {
+          // console.log("地域分岐とおたよ");
           setAreaName(dataFilter);
         }
       }
@@ -47,28 +49,34 @@ export const ParkList = () => {
         dataFilter.map((ageFilter) => {
           if (ageFilter === "baby" || "child") {
             // console.log("年齢分岐通ったよ");
-            console.log("ageFilter:", ageFilter);
+            // console.log("ageFilter:", ageFilter);
             setIsAge(true);
           }
         });
       }
+
+      if (screenName === "公園名絞り込み") {
+        setParkName(dataFilter);
+        console.log("dataFilter:", dataFilter);
+      }
     });
   }, []);
+  console.log("parks:", parks);
+  console.log("parkName:", parkName);
 
   // 地域フィルター関数
-  // console.log("areaName:", areaName);
   useEffect(() => {
     const areaFilterData = parks.filter((park) => park.area === areaName);
     setParks(areaFilterData);
   }, [areaName]);
 
-  // ベイビーフィルター関数
+  // 年齢フィルター関数
   useEffect(() => {
     const { dataFilter } = location.state;
-    console.log("dataFilter:", dataFilter);
-    if (dataFilter.find((data) => data === "baby")) {
-      if (dataFilter.find((data) => data === "child")) {
-        return;
+    // console.log("dataFilter:", dataFilter);
+    if (dataFilter.includes("baby")) {
+      if (dataFilter.includes("child")) {
+        // console.log("両方あるよ");
       } else {
         const babyFilterData = parks.filter((park) => park.baby === true);
         setParks(babyFilterData);
@@ -81,6 +89,15 @@ export const ParkList = () => {
       // console.log("子供だけ");
     }
   }, [isAge]);
+
+  // 年齢フィルター関数
+  useEffect(() => {
+    const parkNameFilterData = parks.filter((park) =>
+      park.name.match(parkName)
+    );
+    setParks(parkNameFilterData);
+    console.log("parkNameFilterData:", parkNameFilterData);
+  }, [parkName]);
 
   return (
     <div style={styles.body}>
