@@ -90,10 +90,10 @@ export const ParkList = () => {
     }
   }, [isAge]);
 
-  // 年齢フィルター関数
+  // 公園名フィルター関数
   useEffect(() => {
-    const parkNameFilterData = parks.filter((park) =>
-      park.name.match(parkName)
+    const parkNameFilterData = parks.filter(
+      (park) => park.name.match(parkName) || park.furigana.match(parkName)
     );
     setParks(parkNameFilterData);
     console.log("parkNameFilterData:", parkNameFilterData);
