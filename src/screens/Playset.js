@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
 
 export const Playset = () => {
+  const [playset, setPlayset] = useState([]);
+
   return (
     <div style={styles.body}>
       <Header />

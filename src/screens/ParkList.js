@@ -62,7 +62,6 @@ export const ParkList = () => {
     });
   }, []);
   console.log("parks:", parks);
-  console.log("parkName:", parkName);
 
   // 地域フィルター関数
   useEffect(() => {
@@ -90,7 +89,7 @@ export const ParkList = () => {
     }
   }, [isAge]);
 
-  // 年齢フィルター関数
+  // 公園名フィルター関数
   useEffect(() => {
     const parkNameFilterData = parks.filter((park) =>
       park.name.match(parkName)
@@ -98,6 +97,20 @@ export const ParkList = () => {
     setParks(parkNameFilterData);
     console.log("parkNameFilterData:", parkNameFilterData);
   }, [parkName]);
+
+  // 遊具フィルター関数
+  const filter = ["滑り台", "ぶらんこ", "お砂場"];
+  const playsetFilterData = parks.filter((park) => park.playset === filter);
+  console.log("playsetFilterData:", playsetFilterData);
+
+  //　配列A[1,2,3,4,5]表示されない
+  //　条件配列B[2,3,6]
+  // 抽出した配列C[2,3]false
+
+  // trueの場合
+  //　配列A[1,2,3,4,5,6]
+  //　条件配列B[2,3,6]
+  // 抽出した配列C[2,3,6]true
 
   return (
     <div style={styles.body}>
