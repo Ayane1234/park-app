@@ -24,12 +24,12 @@ export const ParkName = () => {
     <div style={styles.body}>
       <Header />
       <section style={styles.section}>
-        <textarea
-          style={styles.textarea}
+        <input
+          style={styles.input}
           value={input}
           onChange={handeChange}
           placeholder="公園名を入力"
-        ></textarea>
+        ></input>
       </section>
 
       <SearchButton style={styles.button} onClick={() => toParkList()} />
@@ -58,7 +58,7 @@ const styles = {
     alignItems: "center",
   },
 
-  textarea: {
+  input: {
     width: "80%",
     height: "10vh",
     border: "none",
