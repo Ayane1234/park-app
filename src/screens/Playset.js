@@ -3,11 +3,26 @@ import { useNavigate } from "react-router-dom";
 import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 export const Playset = () => {
   const [playset, setPlayset] = useState([]);
   const navigate = useNavigate();
-  const ref = useRef(null);
+  const ref = useRef([]);
+
+  const playsetData = [
+    "お砂場",
+    "ぶらんこ",
+    "滑り台",
+    "スプリング遊具",
+    "鉄棒",
+    "ローラースライダー",
+    "ジャングルジム",
+    "ロープウェイ",
+  ];
+  playsetData.forEach((text, index) => {
+    ref.current[index] = React.createRef();
+  });
 
   const toParkList = () => {
     navigate("/ParkList", {
@@ -15,23 +30,55 @@ export const Playset = () => {
     });
   };
 
-  const onClick = () => {
+  useEffect(() => {}, [playset]);
+  console.log("playset:", playset);
+
+  const onClick = (index) => {
+    const array = playset;
     const el = ref.current;
-    console.log("el:", el.textContent);
-    // const text =
-    // console.log("text:", text);
+    console.log("el:", el[index].current.style.backgroundColor);
+
+    const playsetText = el[index].current.textContent;
+    const newPlayset = playsetText;
+
+    console.log("newPlayset:", newPlayset);
+
+    if (playset.includes(newPlayset)) {
+      const nonThisPlayset = playset.filter((data) => data !== newPlayset);
+      setPlayset(nonThisPlayset);
+      el[index].current.style.backgroundColor = "white";
+    } else {
+      const playsetFilter = [...array, newPlayset];
+      setPlayset(playsetFilter);
+      el[index].current.style.backgroundColor = "#e4af9b";
+    }
   };
 
   return (
     <div style={styles.body}>
       <Header />
       <section style={styles.section}>
-        <PlaysetSearchButton
+        {playsetData.map((text, index) => {
+          return (
+            <PlaysetSearchButton
+              key={text}
+              ref={ref.current[index]}
+              text1={text}
+              onClick={() => onClick(index)}
+            />
+          );
+        })}
+
+        {/* <PlaysetSearchButton
           text1="お砂場"
           onClick={() => onClick()}
           ref={ref}
         />
-        <PlaysetSearchButton text1="ぶらんこ" />
+        <PlaysetSearchButton
+          text1="ぶらんこ"
+          onClick={() => onClick()}
+          ref={ref}
+        />
 
         <PlaysetSearchButton text1="滑り台" />
         <PlaysetSearchButton text1="スプリング" text2="遊具" />
@@ -40,7 +87,7 @@ export const Playset = () => {
         <PlaysetSearchButton text1="ローラー" text2="スライダー" />
 
         <PlaysetSearchButton text1="ジャングル" text2="ジム" />
-        <PlaysetSearchButton text1="ロープ" text2="ウェイ" />
+        <PlaysetSearchButton text1="ロープ" text2="ウェイ" /> */}
       </section>
 
       <SearchButton onClick={() => toParkList()} />
