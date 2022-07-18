@@ -21,12 +21,7 @@ export const Area = () => {
       state: { dataFilter: area, screenName: "地域絞り込み" },
     });
   };
-  // console.log("area:", area);
-  // console.log("isOmoriActive:", isOmoriActive);
-  // console.log("isChofuActive:", isChofuActive);
-  // console.log("isHanedaActive:", isHanedaActive);
 
-  // console.log("omoriActive:", isOmoriActive);
   // 大森ボタン
   const omoriButtonClick = () => {
     setArea("大森");

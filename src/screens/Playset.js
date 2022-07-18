@@ -15,13 +15,23 @@ export const Playset = () => {
     });
   };
 
+  const array = [];
   const onClick = () => {
     const el = ref.current;
-    console.log("el:", el.textContent);
-    // const text =
-    // console.log("text:", text);
-  };
+    const playsetText = el.textContent;
+    const playsetFilter = [...array, playsetText];
+    setPlayset(playsetFilter);
 
+    console.log("el:", el.textContent);
+    console.log("playsetFilter:", playsetFilter);
+    if (playsetFilter.includes(playsetText)) {
+      playsetFilter.filter((playset) => playset !== playsetText);
+    } else {
+      playsetFilter = [...array, playsetText];
+    }
+    // const text =
+  };
+  console.log("playset:", playset);
   return (
     <div style={styles.body}>
       <Header />
@@ -31,7 +41,11 @@ export const Playset = () => {
           onClick={() => onClick()}
           ref={ref}
         />
-        <PlaysetSearchButton text1="ぶらんこ" />
+        <PlaysetSearchButton
+          text1="ぶらんこ"
+          onClick={() => onClick()}
+          ref={ref}
+        />
 
         <PlaysetSearchButton text1="滑り台" />
         <PlaysetSearchButton text1="スプリング" text2="遊具" />
