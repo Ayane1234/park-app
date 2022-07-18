@@ -35,22 +35,24 @@ export const Playset = () => {
 
   const onClick = (index) => {
     const array = playset;
-    const el = ref.current;
-    console.log("el:", el[index].current.style.backgroundColor);
+    const element = ref.current;
+    // console.log("element:", element[index].current.style);
 
-    const playsetText = el[index].current.textContent;
+    const playsetText = element[index].current.textContent;
     const newPlayset = playsetText;
 
-    console.log("newPlayset:", newPlayset);
+    // console.log("newPlayset:", newPlayset);
 
     if (playset.includes(newPlayset)) {
       const nonThisPlayset = playset.filter((data) => data !== newPlayset);
       setPlayset(nonThisPlayset);
-      el[index].current.style.backgroundColor = "white";
+      element[index].current.style.backgroundColor = "white";
+      element[index].current.style.color = "black";
     } else {
       const playsetFilter = [...array, newPlayset];
       setPlayset(playsetFilter);
-      el[index].current.style.backgroundColor = "#e4af9b";
+      element[index].current.style.backgroundColor = "#e4af9b";
+      element[index].current.style.color = "white";
     }
   };
 
