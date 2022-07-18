@@ -82,7 +82,6 @@ export const Age = () => {
       />
 
       <SearchButton
-        style={styles.button}
         onClick={() => {
           toParkList();
         }}

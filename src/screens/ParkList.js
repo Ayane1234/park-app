@@ -24,7 +24,7 @@ export const ParkList = () => {
   const location = useLocation();
 
   // locationをコンソールに出力
-  console.log("location.state:", location.state);
+  // console.log("location.state:", location.state);
 
   // firestoreから全データの取得
   useEffect(() => {
@@ -41,15 +41,12 @@ export const ParkList = () => {
 
       if (screenName === "地域絞り込み") {
         if (dataFilter === "大森" || "蒲田・羽田" || "調布") {
-          // console.log("地域分岐とおたよ");
           setAreaName(dataFilter);
         }
       }
       if (screenName === "年齢絞り込み") {
         dataFilter.map((ageFilter) => {
           if (ageFilter === "baby" || "child") {
-            // console.log("年齢分岐通ったよ");
-            // console.log("ageFilter:", ageFilter);
             setIsAge(true);
           }
         });
@@ -61,8 +58,6 @@ export const ParkList = () => {
       }
     });
   }, []);
-  console.log("parks:", parks);
-  console.log("parkName:", parkName);
 
   // 地域フィルター関数
   useEffect(() => {
@@ -73,20 +68,15 @@ export const ParkList = () => {
   // 年齢フィルター関数
   useEffect(() => {
     const { dataFilter } = location.state;
-    // console.log("dataFilter:", dataFilter);
     if (dataFilter.includes("baby")) {
       if (dataFilter.includes("child")) {
-        // console.log("両方あるよ");
       } else {
         const babyFilterData = parks.filter((park) => park.baby === true);
         setParks(babyFilterData);
-        // console.log("ベイビーだけ");
       }
     } else {
       const childFilterData = parks.filter((park) => park.child === true);
       setParks(childFilterData);
-
-      // console.log("子供だけ");
     }
   }, [isAge]);
 
@@ -96,8 +86,64 @@ export const ParkList = () => {
       (park) => park.name.match(parkName) || park.furigana.match(parkName)
     );
     setParks(parkNameFilterData);
-    console.log("parkNameFilterData:", parkNameFilterData);
+    // console.log("parkNameFilterData:", parkNameFilterData);
   }, [parkName]);
+
+  // 遊具フィルター関数
+  // useEffect(() => {
+  const filter = ["滑り台", "ぶらんこ", "お砂場"];
+
+  const allPlaysetData = parks.map((park) => {
+    // フィルターとparkをまとめる
+    const arrs = [filter, park.playset];
+    console.log("arrs:", arrs);
+
+    // フィルターとparkをconcatnateする
+    const arrsConcat = filter.concat(park.playset);
+    console.log("arrsConcat:", arrsConcat);
+
+    // 重複をなくす
+    const chofuku = arrsConcat.filter(function (value, index, array) {
+      return array.indexOf(value) === index;
+    });
+    console.log("chofuku:", chofuku);
+
+    // フィルターにもpark.playsetにも両方ある遊具を絞る
+    const result = chofuku.filter(function (val) {
+      let samePlayset = true;
+
+      arrs.forEach(function (filterAndParkSet, index) {
+        samePlayset = filterAndParkSet.indexOf(val) !== -1 && samePlayset;
+      });
+      return samePlayset;
+    });
+    console.log("result:", result);
+
+    // filterとresultのJSON.stringfyで比較
+    // trueだったら、parkをリターンする
+
+    if (JSON.stringify(filter) === JSON.stringify(result)) {
+      return park;
+    } else {
+      return false;
+    }
+    // });
+  });
+
+  console.log("allplaysetData:", allPlaysetData);
+
+  const playsetFilterData = allPlaysetData.filter((park) => park !== false);
+  console.log("playsetFilterData:", playsetFilterData);
+  // }, []);
+
+  //　配列A[1,2,3,4,5]表示されない
+  //　条件配列B[2,3,6]
+  // 抽出した配列C[2,3]false
+
+  // trueの場合
+  //　配列A[1,2,3,4,5,6]
+  //　条件配列B[2,3,6]
+  // 抽出した配列C[2,3,6]true
 
   return (
     <div style={styles.body}>
