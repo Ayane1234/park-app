@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
-import { ConstructionOutlined } from "@mui/icons-material";
 
 export const Playset = () => {
   const [playset, setPlayset] = useState([]);
@@ -108,10 +107,15 @@ const styles = {
     justifyContent: "center",
   },
   section: {
-    width: "75%",
-    height: "75%",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    maxWidth: "300px",
+    maxHeight: "600px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    // gridTemplateRows: "1fr 1fr ",
+    // justifySelf: "center",
+    // alignSelf: "center",
+    placeItems: "center",
+    columnGap: "10px",
+    rowGap: "0",
   },
 };
