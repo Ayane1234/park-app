@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
-import { ConstructionOutlined } from "@mui/icons-material";
 
 export const Playset = () => {
   const [playset, setPlayset] = useState([]);
@@ -35,22 +34,24 @@ export const Playset = () => {
 
   const onClick = (index) => {
     const array = playset;
-    const el = ref.current;
-    console.log("el:", el[index].current.style.backgroundColor);
+    const element = ref.current;
+    // console.log("element:", element[index].current.style);
 
-    const playsetText = el[index].current.textContent;
+    const playsetText = element[index].current.textContent;
     const newPlayset = playsetText;
 
-    console.log("newPlayset:", newPlayset);
+    // console.log("newPlayset:", newPlayset);
 
     if (playset.includes(newPlayset)) {
       const nonThisPlayset = playset.filter((data) => data !== newPlayset);
       setPlayset(nonThisPlayset);
-      el[index].current.style.backgroundColor = "white";
+      element[index].current.style.backgroundColor = "white";
+      element[index].current.style.color = "black";
     } else {
       const playsetFilter = [...array, newPlayset];
       setPlayset(playsetFilter);
-      el[index].current.style.backgroundColor = "#e4af9b";
+      element[index].current.style.backgroundColor = "#e4af9b";
+      element[index].current.style.color = "white";
     }
   };
 
@@ -106,10 +107,15 @@ const styles = {
     justifyContent: "center",
   },
   section: {
-    width: "75%",
-    height: "75%",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    maxWidth: "300px",
+    maxHeight: "600px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    // gridTemplateRows: "1fr 1fr ",
+    // justifySelf: "center",
+    // alignSelf: "center",
+    placeItems: "center",
+    columnGap: "10px",
+    rowGap: "0",
   },
 };
