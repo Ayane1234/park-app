@@ -4,11 +4,11 @@ export const AgeFilterButton = ({ text, onClick, bool }) => {
   // console.log("bool:", bool);
   return (
     <div
+      // style={bool ? styles.AgeFilterButtonFalse : styles.AgeFilterButtonTrue}
       style={bool ? styles.AgeFilterButtonTrue : styles.AgeFilterButtonFalse}
+      onClick={onClick}
     >
-      <p style={styles.text} onClick={onClick}>
-        {text}
-      </p>
+      <p style={styles.text}>{text}</p>
     </div>
   );
 };
@@ -25,6 +25,7 @@ const styles = {
     justifyContent: "center",
     position: "relative",
     borderRadius: "30px",
+    // cursor: "pointer",
   },
   text: {
     position: "absolute",
@@ -40,6 +41,6 @@ const styles = {
     justifyContent: "center",
     position: "relative",
     borderRadius: "30px",
-    cursor: "pointer",
+    // cursor: "pointer",
   },
 };

@@ -8,9 +8,9 @@ import { collection, getDocs } from "firebase/firestore";
 export const ParkList = () => {
   // useStateの初期化
   const [parks, setParks] = useState([]);
-  const [areaName, setAreaName] = useState();
-  const [isAge, setIsAge] = useState();
-  const [parkName, setParkName] = useState();
+  const [areaName, setAreaName] = useState("");
+  const [isAge, setIsAge] = useState(); //要検討
+  const [parkName, setParkName] = useState("");
   const [playset, setPlayset] = useState([]);
 
   // useNavigateの初期化
@@ -30,6 +30,7 @@ export const ParkList = () => {
     const { dataFilter, screenName } = location.state;
     console.log("dataFilter:", dataFilter);
 
+    // 関数化する
     getDocs(getParkData).then((snapShot) => {
       const parkDatasList = snapShot.docs.map((doc) => ({
         id: doc.id,
@@ -88,8 +89,7 @@ export const ParkList = () => {
     setParks(parkNameFilterData);
   }, [parkName]);
 
-  // 遊具フィルター関数
-  useEffect(() => {
+  const playsetFilterFunc = () => {
     const filter = playset;
 
     const allPlaysetData = parks.map((park) => {
@@ -126,8 +126,13 @@ export const ParkList = () => {
     const playsetFilterData = allPlaysetData.filter((park) => park !== false);
 
     setParks(playsetFilterData);
+  };
+  // 遊具フィルター関数
+  useEffect(() => {
+    playsetFilterFunc();
   }, [playset]);
 
+  console.log("parks:", parks);
   return (
     <div style={styles.body}>
       <Header2 />
