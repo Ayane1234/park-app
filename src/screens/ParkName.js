@@ -59,8 +59,8 @@ const styles = {
   },
 
   input: {
-    width: "80%",
-    height: "10vh",
+    width: "222px",
+    height: "100px",
     border: "none",
     textAlign: "center",
     fontSize: "20px",
