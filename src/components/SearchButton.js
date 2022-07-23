@@ -10,8 +10,8 @@ export const SearchButton = ({ onClick }) => {
 
 const styles = {
   searchButton: {
-    width: "55%",
-    height: "70px",
+    width: "221px",
+    height: "67px",
     margin: "20px",
     backgroundColor: "#d4dfbb",
     borderRadius: "30px",

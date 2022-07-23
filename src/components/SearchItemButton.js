@@ -1,12 +1,12 @@
 import React from "react";
 
-export const SearchItemButton = (props) => {
+export const SearchItemButton = ({ text1, text2, onClick }) => {
   return (
-    <div style={styles.item} onClick={props.onClick}>
+    <div style={styles.item} onClick={onClick}>
       <p style={styles.text}>
-        {props.text1}
+        {text1}
         <br></br>
-        {props.text2}
+        {text2}
       </p>
     </div>
   );
@@ -14,11 +14,10 @@ export const SearchItemButton = (props) => {
 
 const styles = {
   item: {
-    width: "30vw",
-    height: "30vw",
+    width: "120px",
+    height: "120px",
     margin: "10px",
     backgroundColor: "#d4dfbb",
-
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

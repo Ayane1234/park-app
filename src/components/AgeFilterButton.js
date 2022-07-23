@@ -15,8 +15,8 @@ export const AgeFilterButton = ({ text, onClick, bool }) => {
 
 const styles = {
   AgeFilterButtonTrue: {
-    width: "60vw",
-    height: "25vw",
+    width: "220px",
+    height: "100px",
     margin: "30px",
     backgroundColor: "#e4af9b",
     color: "white",
@@ -25,15 +25,14 @@ const styles = {
     justifyContent: "center",
     position: "relative",
     borderRadius: "30px",
-    // cursor: "pointer",
   },
   text: {
     position: "absolute",
     textAlign: "center",
   },
   AgeFilterButtonFalse: {
-    width: "60vw",
-    height: "25vw",
+    width: "220px",
+    height: "100px",
     margin: "30px",
     backgroundColor: "white",
     display: "flex",
@@ -41,6 +40,5 @@ const styles = {
     justifyContent: "center",
     position: "relative",
     borderRadius: "30px",
-    // cursor: "pointer",
   },
 };

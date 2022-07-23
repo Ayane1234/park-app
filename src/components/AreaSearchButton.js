@@ -14,8 +14,8 @@ export const AreaSearchButton = ({ text, onClick, bool }) => {
 
 const styles = {
   AreaFilterButtonTrue: {
-    width: "60vw",
-    height: "25vw",
+    width: "220px",
+    height: "100px",
     margin: "10px",
     backgroundColor: "#e4af9b",
     display: "flex",
@@ -29,8 +29,8 @@ const styles = {
     textAlign: "center",
   },
   AreaFilterButtonFalse: {
-    width: "60vw",
-    height: "25vw",
+    width: "220px",
+    height: "100px",
     margin: "10px",
     backgroundColor: "white",
     display: "flex",
