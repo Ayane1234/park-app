@@ -1,7 +1,7 @@
 import React from "react";
 
 export const PlaysetSearchButton = React.forwardRef(
-  ({ text1, text2, onClick, bool }, ref) => (
+  ({ text1, text2, onClick }, ref) => (
     <div style={styles.PlaysetSearchButton} onClick={onClick} ref={ref}>
       <p style={styles.text}>
         {text1}

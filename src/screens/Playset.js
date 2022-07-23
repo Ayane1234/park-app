@@ -8,7 +8,6 @@ export const Playset = () => {
   const [playset, setPlayset] = useState([]);
   const navigate = useNavigate();
   const ref = useRef([]);
-
   const playsetData = [
     "お砂場",
     "ぶらんこ",
@@ -19,6 +18,19 @@ export const Playset = () => {
     "ジャングルジム",
     "ロープウェイ",
   ];
+
+  const playsetDataObject = [
+    { tilte: "お砂場", bool: false },
+    { title: "ぶらんこ", bool: false },
+    "滑り台",
+    "スプリング遊具",
+    "鉄棒",
+    "ローラースライダー",
+    "ジャングルジム",
+    "ロープウェイ",
+  ];
+  const [test, setTest] = useState(playsetDataObject);
+
   playsetData.forEach((text, index) => {
     ref.current[index] = React.createRef();
   });
@@ -29,7 +41,7 @@ export const Playset = () => {
     });
   };
 
-  useEffect(() => {}, [playset]);
+  // useEffect(() => {}, [playset]);
   console.log("playset:", playset);
 
   const onClick = (index) => {
