@@ -1,15 +1,17 @@
 import React from "react";
 
-export const PlaysetSearchButton = React.forwardRef(
-  ({ text1, text2, onClick }, ref) => (
-    <div style={styles.PlaysetSearchButton} onClick={onClick} ref={ref}>
-      <p style={styles.text}>
-        {text1}
-        <br></br>
-        {text2}
-      </p>
-    </div>
-  )
+export const PlaysetSearchButton = ({ text1, text2, onClick }, ref) => (
+  <div
+    style={styles.PlaysetSearchButton}
+    onClick={onClick}
+    // ref={ref}
+  >
+    <p style={styles.text}>
+      {text1}
+      <br></br>
+      {text2}
+    </p>
+  </div>
 );
 
 const styles = {
