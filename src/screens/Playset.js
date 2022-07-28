@@ -4,7 +4,11 @@ import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
 import { db } from "../firebase/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  connectFirestoreEmulator,
+  getDocs,
+} from "firebase/firestore";
 
 export const Playset = () => {
   const [playset, setPlayset] = useState([]);
@@ -24,6 +28,18 @@ export const Playset = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (playset.length === 0) {
+      setIsSearch(false);
+      console.log("配列は0だよ");
+    } else {
+      setIsSearch(true);
+      console.log("配列は１以上だよ");
+    }
+  }, [playset]);
+  console.log("isSearch:", isSearch);
+  console.log("playset.length:", playset.length);
+
   const playsetDataObject = [
     { tilte: "お砂場", bool: false },
     { title: "ぶらんこ", bool: false },
@@ -35,24 +51,38 @@ export const Playset = () => {
     { title: "ロープウェイ", bool: false },
   ];
   const [isActive, setIsActive] = useState(playsetDataObject);
-  console.log("isActive:", isActive[1].bool);
-
+  console.log("isActive:", isActive);
   // playsetData.forEach((text, index) => {
   //   ref.current[index] = React.createRef();
   // });
-  let array = [];
+
   const playsetClick = (value) => {
+    let array = [];
     array = playset;
     const newPlayset = value;
-    console.log("value:", value);
 
     if (!playset.includes(newPlayset)) {
       const playsetFilterData = [...array, newPlayset];
       setPlayset(playsetFilterData);
-      const found = playsetDataObject.find((e) => e.title === newPlayset);
+
+      const isTrueObject = isActive;
+      const newIsTrueObject = isTrueObject.map((playsetBool) =>
+        playsetBool.title === newPlayset
+          ? { ...playsetBool, bool: true }
+          : playsetBool
+      );
+
+      setIsActive(newIsTrueObject);
     } else {
       const noneThisPlayset = playset.filter((data) => data !== newPlayset);
       setPlayset(noneThisPlayset);
+      const isFalseObject = isActive;
+      const newIsFalseObject = isFalseObject.map((playsetBool) =>
+        playsetBool.title === newPlayset
+          ? { ...playsetBool, bool: false }
+          : playsetBool
+      );
+      setIsActive(newIsFalseObject);
     }
   };
   // console.log("playset:", playset);
@@ -92,7 +122,6 @@ export const Playset = () => {
 
   // console.log("playsetData:", playsetData);
   console.log("playset:", playset);
-  console.log("isSearch :", isSearch);
 
   return (
     <div style={styles.body}>
@@ -105,6 +134,7 @@ export const Playset = () => {
               key={id}
               text2={playset.text2}
               onClick={() => playsetClick(playset.value)}
+              value={playset.value}
               bool={isActive}
             />
           );
