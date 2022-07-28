@@ -5,7 +5,7 @@ import { SearchButton } from "../components/SearchButton";
 
 export const ParkName = () => {
   const [parkName, setParkName] = useState();
-  const [input, setInput] = useState();
+  const [input, setInput] = useState("");
   const navigate = useNavigate();
   console.log("input:", input);
 

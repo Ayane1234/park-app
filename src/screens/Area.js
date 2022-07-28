@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const Area = () => {
   //useStateの初期化
   const [area, setArea] = useState("");
+  const [isSearch, setIsSearch] = useState(false);
   const [isOmoriActive, setIsOmoriActive] = useState(false);
   const [isChofuActive, setIsChofuActive] = useState(false);
   const [isHanedaActive, setIsHanedaActive] = useState(false);
@@ -22,6 +23,13 @@ export const Area = () => {
     });
   };
 
+  useEffect(() => {
+    if (area === "") {
+      setIsSearch(false);
+    } else {
+      setIsSearch(true);
+    }
+  }, [area]);
   // 大森ボタン
   const omoriButtonClick = () => {
     setArea("大森");
@@ -68,6 +76,7 @@ export const Area = () => {
 
       <SearchButton
         style={styles.button}
+        isSearch={isSearch}
         onClick={() => {
           toParkList(area);
         }}
