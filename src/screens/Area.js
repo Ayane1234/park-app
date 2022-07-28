@@ -18,9 +18,13 @@ export const Area = () => {
   // 公園リストへのルーティングを設定
   // useState(area)を"/ParkList"へ渡す
   const toParkList = () => {
-    navigate("/ParkList", {
-      state: { dataFilter: area, screenName: "地域絞り込み" },
-    });
+    if (area === "") {
+      return;
+    } else {
+      navigate("/ParkList", {
+        state: { dataFilter: area, screenName: "地域絞り込み" },
+      });
+    }
   };
 
   useEffect(() => {
