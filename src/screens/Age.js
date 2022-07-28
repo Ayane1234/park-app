@@ -14,6 +14,7 @@ export const Age = () => {
   const [baby, setBaby] = useState([]);
   const [isBabyFilterActive, setIsBabyFilterActive] = useState(false);
   const [isChildFilterActive, setIsChildFilterActive] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
 
   const array = [];
 
@@ -25,14 +26,22 @@ export const Age = () => {
 
   // 公園リストへのルーティングの設定
   const toParkList = () => {
-    navigate("/ParkList", {
-      state: { dataFilter: age, screenName: "年齢絞り込み" },
-    });
+    if (!age.length) {
+      return;
+    } else {
+      navigate("/ParkList", {
+        state: { dataFilter: age, screenName: "年齢絞り込み" },
+      });
+    }
   };
-  // console.log("age:", age);
-  // console.log("baby:", baby);
-  // console.log("child:", child);
 
+  useEffect(() => {
+    if (!age.length) {
+      setIsSearch(false);
+    } else {
+      setIsSearch(true);
+    }
+  }, [age]);
   // babyボタン
   const babyButttonClick = () => {
     if (!baby.length) {
@@ -82,6 +91,7 @@ export const Age = () => {
       />
 
       <SearchButton
+        isSearch={isSearch}
         onClick={() => {
           toParkList();
         }}

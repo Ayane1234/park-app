@@ -4,19 +4,32 @@ import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
 
 export const ParkName = () => {
-  const [parkName, setParkName] = useState();
+  const [parkName, setParkName] = useState("");
   const [input, setInput] = useState("");
+  const [isSearch, setIsSearch] = useState(false);
   const navigate = useNavigate();
-  console.log("input:", input);
+  console.log("parkName:", parkName);
 
   useEffect(() => {
     setParkName(input);
   }, [input]);
 
+  useEffect(() => {
+    if (!parkName) {
+      setIsSearch(false);
+    } else {
+      setIsSearch(true);
+    }
+  }, [parkName]);
+
   const toParkList = () => {
-    navigate("/ParkList", {
-      state: { dataFilter: parkName, screenName: "公園名絞り込み" },
-    });
+    if (parkName === "") {
+      return;
+    } else {
+      navigate("/ParkList", {
+        state: { dataFilter: parkName, screenName: "公園名絞り込み" },
+      });
+    }
   };
 
   const handeChange = (event) => setInput(event.target.value);
@@ -30,9 +43,12 @@ export const ParkName = () => {
           onChange={handeChange}
           placeholder="公園名を入力"
         ></input>
+        <div style={styles.attention}>
+          ひらがな　または　漢字で入力してください
+        </div>
       </section>
 
-      <SearchButton style={styles.button} onClick={() => toParkList()} />
+      <SearchButton isSearch={isSearch} onClick={() => toParkList()} />
     </div>
   );
 };
@@ -57,7 +73,12 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
   },
-
+  attention: {
+    padding: "10px",
+    width: "222px",
+    fontSize: "15px",
+    color: "gray",
+  },
   input: {
     width: "222px",
     height: "100px",
