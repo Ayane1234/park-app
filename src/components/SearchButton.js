@@ -1,7 +1,7 @@
 import React from "react";
 
 export const SearchButton = ({ onClick, isSearch }) => {
-  console.log("props.isSearch:", isSearch);
+  // console.log("props.isSearch:", isSearch);
   return (
     <button
       style={isSearch ? styles.searchButtonTrue : styles.searchButtonFalse}
