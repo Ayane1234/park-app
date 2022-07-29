@@ -29,16 +29,24 @@ export const Playset = () => {
   }, []);
 
   useEffect(() => {
-    if (playset.length === 0) {
-      setIsSearch(false);
-      console.log("配列は0だよ");
-    } else {
+    if (playset.length > 0) {
       setIsSearch(true);
-      console.log("配列は１以上だよ");
+    } else {
+      setIsSearch(false);
     }
   }, [playset]);
-  console.log("isSearch:", isSearch);
-  console.log("playset.length:", playset.length);
+
+  useEffect(() => {
+    if (playset.length === 0) {
+      setIsSearch(false);
+      // console.log("配列は0だよ");
+    } else {
+      setIsSearch(true);
+      // console.log("配列は１以上だよ");
+    }
+  }, [playset]);
+  // console.log("isSearch:", isSearch);
+  // console.log("playset.length:", playset.length);
 
   const playsetDataObject = [
     { tilte: "お砂場", bool: false },
@@ -51,7 +59,7 @@ export const Playset = () => {
     { title: "ロープウェイ", bool: false },
   ];
   const [isActive, setIsActive] = useState(playsetDataObject);
-  console.log("isActive:", isActive);
+  // console.log("isActive:", isActive);
   // playsetData.forEach((text, index) => {
   //   ref.current[index] = React.createRef();
   // });
@@ -121,7 +129,7 @@ export const Playset = () => {
   };
 
   // console.log("playsetData:", playsetData);
-  console.log("playset:", playset);
+  // console.log("playset:", playset);
 
   return (
     <div style={styles.body}>
