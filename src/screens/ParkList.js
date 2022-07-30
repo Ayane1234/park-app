@@ -140,57 +140,60 @@ export const ParkList = () => {
           <div style={styles.amountPark}>{parks.length}件</div>
         </section>
       )}
-      <section style={styles.parkListSection}>
-        {parks.length > 0 ? (
-          parks.map((park, id) => {
-            return (
-              <ParkInfoCard
-                data={park}
-                onClick={() => {
-                  toParkDetailInfo(park);
-                }}
-                key={id}
-              />
-            );
-          })
-        ) : (
-          <div style={styles.nonePark}>
-            <p style={styles.text}>
-              お探しの検索条件では、公園はありませんでした。
-              <br></br>
-              新しい検索条件で再検索してみてください。
-            </p>
-          </div>
-        )}
-      </section>
+
+      <div style={styles.parkListSectionWrapper}>
+        <section style={styles.parkListSection}>
+          {parks.length > 0 ? (
+            parks.map((park, id) => {
+              return (
+                <ParkInfoCard
+                  data={park}
+                  onClick={() => {
+                    toParkDetailInfo(park);
+                  }}
+                  key={id}
+                />
+              );
+            })
+          ) : (
+            <div style={styles.nonePark}>
+              <p style={styles.text}>
+                お探しの検索条件では、公園はありませんでした。
+                <br></br>
+                新しい検索条件で再検索してみてください。
+              </p>
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 };
 
 const styles = {
   body: {
+    margin: 0,
+    padding: 0,
     width: "100vw",
-    // height: "100%",
-    backgroundSize: "auto 100%",
-
-    // minHeight: "800px",
+    height: "100%",
+    // minHeight: "100vh",
     position: "relative",
     backgroundColor: "#f3eed5",
+    top: 50,
   },
-  parkListSection: {
-    paddingTop: 30,
-    width: "90%",
-    height: "800px",
-    margin: "auto",
+  parkListSectionWrapper: {
+    display: "flex",
+    justifyContent: "center",
   },
-  // amountParkSection: {
 
-  // },
+  parkListSection: {
+    width: "90%",
+    height: "auto",
+  },
+
   amountPark: {
     width: "90%",
-
     fontSize: "20px",
-    paddingTop: "60px",
     margin: "0 0 0 80%",
   },
   nonePark: {

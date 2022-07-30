@@ -11,13 +11,13 @@ export const HomeIcon = () => {
 
 const styles = {
   home: {
-    fontSize: "40px",
-    padding: "5px",
-    marginLeft: "auto",
-    marginRight: 10,
+    marginLeft: 260,
     marginTop: 10,
-    color: "#CCB5A5",
+    marginRight: "auto",
+    fontSize: "30px",
     backgroundColor: "white",
     borderRadius: "50%",
+    padding: "10px",
+    color: "#CCB5A5",
   },
 };

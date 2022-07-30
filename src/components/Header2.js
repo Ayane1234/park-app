@@ -16,13 +16,14 @@ export const Header2 = () => {
 
 const styles = {
   header2: {
-    backgroundColor: "white",
+    backgroundColor: "gray",
     display: "flex",
     alignItems: "center",
+    // justifyContent: "center",
     position: "fixed",
     left: 0,
     top: 0,
-    width: "100vw",
-    height: 60,
+    width: "100%",
+    height: "60px",
   },
 };
