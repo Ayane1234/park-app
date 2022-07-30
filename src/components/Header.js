@@ -1,6 +1,5 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
 import { Arrow } from "./Arrow";
 
 export const Header = () => {

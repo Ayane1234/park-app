@@ -9,9 +9,9 @@ export const Arrow = () => {
 
 const styles = {
   arrow: {
-    marginLeft: 20,
+    marginLeft: 10,
     marginTop: 10,
-    marginRight: "auto",
+    // marginRight: "auto",
     fontSize: "30px",
     backgroundColor: "white",
     borderRadius: "50%",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AgeFilterButton } from "../components/AgeFilterButton";
-import { Header } from "../components/Header";
+import { Header2 } from "../components/Header2";
 import { SearchButton } from "../components/SearchButton";
 import { useNavigate } from "react-router-dom";
 
@@ -74,29 +74,31 @@ export const Age = () => {
 
   return (
     <div style={styles.body}>
-      <Header />
+      <Header2 />
 
-      <AgeFilterButton
-        text="１−３歳"
-        onClick={() => {
-          babyButttonClick();
-        }}
-        bool={isBabyFilterActive}
-      />
-      <AgeFilterButton
-        text="３−６歳"
-        onClick={() => {
-          childButttonClick();
-        }}
-        bool={isChildFilterActive}
-      />
+      <div style={styles.wrapper}>
+        <AgeFilterButton
+          text="１−３歳"
+          onClick={() => {
+            babyButttonClick();
+          }}
+          bool={isBabyFilterActive}
+        />
+        <AgeFilterButton
+          text="３−６歳"
+          onClick={() => {
+            childButttonClick();
+          }}
+          bool={isChildFilterActive}
+        />
 
-      <SearchButton
-        isSearch={isSearch}
-        onClick={() => {
-          toParkList();
-        }}
-      />
+        <SearchButton
+          isSearch={isSearch}
+          onClick={() => {
+            toParkList();
+          }}
+        />
+      </div>
     </div>
   );
 };
@@ -107,16 +109,13 @@ const styles = {
     height: "100vh",
     position: "relative",
     backgroundColor: "#f3eed5",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    top: 50,
   },
-  section: {
-    width: "100%",
-    height: "auto",
+  wrapper: {
+    height: "90%",
     display: "flex",
     justifyContent: "center",
+    flexDirection: "column",
     alignItems: "center",
   },
 };
