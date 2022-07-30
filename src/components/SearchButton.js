@@ -1,38 +1,42 @@
 import React from "react";
 
 export const SearchButton = ({ onClick, isSearch }) => {
-  // console.log("props.isSearch:", isSearch);
+  console.log("props.isSearch:", isSearch);
   return (
-    <button
+    <div
       style={isSearch ? styles.searchButtonTrue : styles.searchButtonFalse}
       onClick={onClick}
     >
       さがす
-    </button>
+    </div>
   );
 };
 
 const styles = {
   searchButtonTrue: {
-    width: "221px",
+    width: "220px",
     height: "67px",
     margin: "20px",
-    backgroundColor: "#d4dfbb",
-    borderRadius: "30px",
-    border: "none",
-    fontSize: "18px",
+    backgroundColor: "#D4DFBB",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     position: "fixed",
+    borderRadius: "30px",
+    fontSize: "18px",
     bottom: 30,
   },
   searchButtonFalse: {
-    width: "221px",
+    width: "220px",
     height: "67px",
     margin: "20px",
-    backgroundColor: "#gray",
-    borderRadius: "30px",
-    border: "none",
-    fontSize: "18px",
+    backgroundColor: "lightgray",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     position: "fixed",
+    borderRadius: "30px",
+    fontSize: "18px",
     bottom: 30,
   },
 };
