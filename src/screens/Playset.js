@@ -28,26 +28,6 @@ export const Playset = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (playset.length > 0) {
-      setIsSearch(true);
-    } else {
-      setIsSearch(false);
-    }
-  }, [playset]);
-
-  useEffect(() => {
-    if (playset.length === 0) {
-      setIsSearch(false);
-      // console.log("配列は0だよ");
-    } else {
-      setIsSearch(true);
-      // console.log("配列は１以上だよ");
-    }
-  }, [playset]);
-  // console.log("isSearch:", isSearch);
-  // console.log("playset.length:", playset.length);
-
   const playsetDataObject = [
     { tilte: "お砂場", bool: false },
     { title: "ぶらんこ", bool: false },
@@ -59,7 +39,15 @@ export const Playset = () => {
     { title: "ロープウェイ", bool: false },
   ];
   const [isActive, setIsActive] = useState(playsetDataObject);
-  // console.log("isActive:", isActive);
+
+  useEffect(() => {
+    if (playset.length > 0) {
+      setIsSearch(true);
+    } else {
+      setIsSearch(false);
+    }
+  }, [playset]);
+
   // playsetData.forEach((text, index) => {
   //   ref.current[index] = React.createRef();
   // });
@@ -93,30 +81,6 @@ export const Playset = () => {
       setIsActive(newIsFalseObject);
     }
   };
-  // console.log("playset:", playset);
-
-  // const onClick = (index) => {
-  //   const array = playset;
-  //   const element = ref.current;
-  //   // console.log("element:", element[index].current.style);
-
-  //   const playsetText = element[index].current.textContent;
-  //   const newPlayset = playsetText;
-  //   console.log("element:", element);
-  //   // console.log("newPlayset:", newPlayset);
-
-  //   if (playset.includes(newPlayset)) {
-  //     const nonThisPlayset = playset.filter((data) => data !== newPlayset);
-  //     setPlayset(nonThisPlayset);
-  //     element[index].current.style.backgroundColor = "white";
-  //     element[index].current.style.color = "black";
-  //   } else {
-  //     const playsetFilter = [...array, newPlayset];
-  //     setPlayset(playsetFilter);
-  //     element[index].current.style.backgroundColor = "#e4af9b";
-  //     element[index].current.style.color = "white";
-  //   }
-  // };
 
   const toParkList = () => {
     if (!playset.length) {
@@ -127,9 +91,6 @@ export const Playset = () => {
       });
     }
   };
-
-  // console.log("playsetData:", playsetData);
-  // console.log("playset:", playset);
 
   return (
     <div style={styles.body}>
@@ -147,16 +108,6 @@ export const Playset = () => {
             />
           );
         })}
-        {/* {playsetData.map((text, index) => {
-          return (
-            <PlaysetSearchButton
-              key={index}
-              // ref={ref.current[index]}
-              text1={text}
-              onClick={() => playsetClick(text)}
-            />
-          );
-        })} */}
       </section>
 
       <SearchButton isSearch={isSearch} onClick={() => toParkList()} />

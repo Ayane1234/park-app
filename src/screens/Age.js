@@ -36,12 +36,13 @@ export const Age = () => {
   };
 
   useEffect(() => {
-    if (!age.length) {
-      setIsSearch(false);
-    } else {
+    if (age.length > 0) {
       setIsSearch(true);
+    } else {
+      setIsSearch(false);
     }
   }, [age]);
+
   // babyボタン
   const babyButttonClick = () => {
     if (!baby.length) {
