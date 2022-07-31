@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AgeFilterButton } from "../components/AgeFilterButton";
-import { Header2 } from "../components/Header2";
+import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
 import { useNavigate } from "react-router-dom";
 
@@ -74,7 +74,7 @@ export const Age = () => {
 
   return (
     <div style={styles.body}>
-      <Header2 />
+      <Header />
 
       <div style={styles.wrapper}>
         <AgeFilterButton

@@ -11,9 +11,9 @@ export const HomeIcon = () => {
 
 const styles = {
   home: {
-    marginLeft: 260,
-    marginTop: 10,
-    marginRight: "auto",
+    // marginLeft: 260,
+    // marginTop: 10,
+    marginRight: "5%",
     fontSize: "30px",
     backgroundColor: "white",
     borderRadius: "50%",
