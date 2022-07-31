@@ -1,12 +1,10 @@
 import React from "react";
 
 export const PlaysetSearchButton = ({ text1, text2, onClick, bool, value }) => {
-  // console.log("propsのbool:", bool);
-
   return (
     <div
       style={
-        bool ? styles.PlaysetSearchButtonFalse : styles.PlaysetSearchButtonTrue
+        bool ? styles.PlaysetSearchButtonTrue : styles.PlaysetSearchButtonFalse
       }
       onClick={onClick}
     >

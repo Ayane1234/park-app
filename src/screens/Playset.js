@@ -1,21 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PlaysetSearchButton } from "../components/PlaysetSearchButton";
 import { Header } from "../components/Header";
 import { SearchButton } from "../components/SearchButton";
 import { db } from "../firebase/firebase";
-import {
-  collection,
-  connectFirestoreEmulator,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 export const Playset = () => {
   const [playset, setPlayset] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
   const [playsetData, setPlaysetData] = useState([]);
   const navigate = useNavigate();
-  const ref = useRef([]);
 
   useEffect(() => {
     const getPlaysetData = collection(db, "PlaysetList");
@@ -24,21 +19,15 @@ export const Playset = () => {
         id: doc.id,
         ...doc.data(),
       }));
-      setPlaysetData(playsetList);
+
+      const playsetListWithBool = playsetList.map((playset) => {
+        playset.bool = false;
+        return playset;
+      });
+
+      setPlaysetData(playsetListWithBool);
     });
   }, []);
-
-  const playsetDataObject = [
-    { tilte: "お砂場", bool: false },
-    { title: "ぶらんこ", bool: false },
-    { title: "滑り台", bool: false },
-    { title: "スプリング遊具", bool: false },
-    { title: "鉄棒", bool: false },
-    { title: "ローラースライダー", bool: false },
-    { title: "ジャングルジム", bool: false },
-    { title: "ロープウェイ", bool: false },
-  ];
-  const [isActive, setIsActive] = useState(playsetDataObject);
 
   useEffect(() => {
     if (playset.length > 0) {
@@ -48,37 +37,30 @@ export const Playset = () => {
     }
   }, [playset]);
 
-  // playsetData.forEach((text, index) => {
-  //   ref.current[index] = React.createRef();
-  // });
-
   const playsetClick = (value) => {
     let array = [];
     array = playset;
     const newPlayset = value;
-
     if (!playset.includes(newPlayset)) {
       const playsetFilterData = [...array, newPlayset];
       setPlayset(playsetFilterData);
 
-      const isTrueObject = isActive;
-      const newIsTrueObject = isTrueObject.map((playsetBool) =>
-        playsetBool.title === newPlayset
-          ? { ...playsetBool, bool: true }
-          : playsetBool
+      const playsetTrueBool = playsetData.map((playsetdata) =>
+        playsetdata.value === newPlayset
+          ? { ...playsetdata, bool: true }
+          : playsetdata
       );
-
-      setIsActive(newIsTrueObject);
+      console.log("playsetbool", playsetTrueBool);
+      setPlaysetData(playsetTrueBool);
     } else {
       const noneThisPlayset = playset.filter((data) => data !== newPlayset);
       setPlayset(noneThisPlayset);
-      const isFalseObject = isActive;
-      const newIsFalseObject = isFalseObject.map((playsetBool) =>
-        playsetBool.title === newPlayset
-          ? { ...playsetBool, bool: false }
-          : playsetBool
+      const playsetFlaseBool = playsetData.map((playsetdata) =>
+        playsetdata.value === newPlayset
+          ? { ...playsetdata, bool: false }
+          : playsetdata
       );
-      setIsActive(newIsFalseObject);
+      setPlaysetData(playsetFlaseBool);
     }
   };
 
@@ -104,7 +86,7 @@ export const Playset = () => {
               text2={playset.text2}
               onClick={() => playsetClick(playset.value)}
               value={playset.value}
-              bool={isActive}
+              bool={playset.bool}
             />
           );
         })}
