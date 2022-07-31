@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header2 } from "../components/Header2";
+import { Header } from "../components/Header";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
 import { db } from "../firebase/firebase";
@@ -134,10 +134,10 @@ export const ParkList = () => {
   console.log("parks:", parks);
   return (
     <div style={styles.body}>
-      <Header2 />
+      <Header />
       {parks.length > 0 && (
         <section style={styles.amountParkSection}>
-          <div style={styles.amountPark}>{parks.length}件</div>
+          <div style={styles.amountPark}>検索結果　{parks.length}件</div>
         </section>
       )}
 
@@ -172,14 +172,15 @@ export const ParkList = () => {
 
 const styles = {
   body: {
-    margin: 0,
-    padding: 0,
+    left: 0,
+    top: 0,
+    overflow: "hidden",
     width: "100vw",
-    height: "100%",
-    // minHeight: "100vh",
+    maxWidth: "100%",
+    minHeight: "100vh",
     position: "relative",
     backgroundColor: "#f3eed5",
-    top: 50,
+    paddingTop: 50,
   },
   parkListSectionWrapper: {
     display: "flex",
@@ -190,11 +191,15 @@ const styles = {
     width: "90%",
     height: "auto",
   },
-
+  amountParkSection: {
+    display: "flex",
+    justifyContent: "flex-end",
+    padding: 20,
+  },
   amountPark: {
-    width: "90%",
+    // width: "90%",
     fontSize: "20px",
-    margin: "0 0 0 80%",
+    // margin: "0 0 0 80%",
   },
   nonePark: {
     width: "300px",

@@ -1,6 +1,6 @@
 import React from "react";
 import { ParkBasicInfoSection } from "../components/ParkBasicInfoSection";
-import { ParkDetailsHeader } from "../components/ParkDetailsHeader";
+import { Header } from "../components/Header";
 import { PlaysetInfoSection } from "../components/PlaysetInfoSection";
 import { ParkOtherInfoSection } from "../components/ParkOtherInfoSection";
 import { useLocation } from "react-router-dom";
@@ -13,7 +13,7 @@ export const ParkDetailInfo = () => {
 
   return (
     <div style={styles.body}>
-      <ParkDetailsHeader />
+      <Header />
       <div style={styles.section}>
         {/* <img src={ParkImg} alt="メイン画像" style={styles.main} /> */}
         <ParkBasicInfoSection data={detailnfo} />

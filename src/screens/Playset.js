@@ -117,7 +117,7 @@ export const Playset = () => {
 
 const styles = {
   body: {
-    paddingTop: 70,
+    paddingTop: 40,
     width: "100vw",
     height: "100vh",
     position: "relative",
@@ -132,6 +132,6 @@ const styles = {
     gridTemplateColumns: "1fr 1fr",
     placeItems: "center",
     columnGap: "10px",
-    rowGap: "0",
+    rowGap: " 0px",
   },
 };

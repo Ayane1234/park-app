@@ -1,26 +1,37 @@
 import React from "react";
-
 import { Arrow } from "./Arrow";
+import { HomeIcon } from "./HomeIcon";
 
 export const Header = () => {
   return (
     <div>
-      <header style={styles.header}>
-        <Arrow />
-      </header>
+      <div style={styles.header2}>
+        <div style={styles.headerWrapper}>
+          <Arrow />
+
+          <HomeIcon />
+        </div>
+      </div>
     </div>
   );
 };
 
 const styles = {
-  header: {
+  header2: {
     backgroundColor: "white",
-    display: "flex",
-    alignItems: "center",
+    flexWrap: "wrap",
     position: "fixed",
     left: 0,
     top: 0,
     width: "100vw",
-    height: 60,
+    height: "60px",
+    // outline: "2px solid blue",
+    zIndex: "1",
+  },
+  headerWrapper: {
+    paddingTop: 5,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 };
