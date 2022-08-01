@@ -1,14 +1,14 @@
 import React from "react";
 import { AreaTag } from "./AreaTag";
 
-export const ParkSummaryInfo = (props) => {
+export const ParkSummaryInfo = ({ data }) => {
   return (
     <div>
       <div style={styles.parkSummaryInfo}>
-        <div style={styles.park}>{props.data.name}</div>
-        <AreaTag area={props.data.area} />
+        <div style={styles.park}>{data.name}</div>
+        <AreaTag area={data.area} />
       </div>
-      <div style={styles.address}>{props.data.address}</div>
+      <div style={styles.address}>{data.address}</div>
     </div>
   );
 };

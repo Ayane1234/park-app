@@ -2,12 +2,11 @@ import React from "react";
 import { ParkBasicInfo } from "./ParkBasicInfo";
 import { AreaTag } from "./AreaTag";
 
-export const ParkBasicInfoSection = (props) => {
-  console.log("ParkBasicInfoのprops:", props);
+export const ParkBasicInfoSection = ({ data }) => {
   return (
     <section style={styles.ParkBasicInfoSection}>
-      <ParkBasicInfo basicInfoData={props.data} />
-      <AreaTag area={props.data.area} />
+      <ParkBasicInfo basicInfoData={data} />
+      <AreaTag area={data.area} />
     </section>
   );
 };

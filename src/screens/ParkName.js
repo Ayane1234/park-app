@@ -8,7 +8,6 @@ export const ParkName = () => {
   const [input, setInput] = useState("");
   const [isSearch, setIsSearch] = useState(false);
   const navigate = useNavigate();
-  console.log("parkName:", parkName);
 
   useEffect(() => {
     setParkName(input);

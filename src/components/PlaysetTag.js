@@ -1,9 +1,9 @@
 import React from "react";
 
-export const PlaysetTag = (props) => {
+export const PlaysetTag = ({ data }) => {
   return (
     <div style={styles.playsetWrapper}>
-      {props.data.playset.map((playitem, index) => {
+      {data.playset.map((playitem, index) => {
         return (
           <p style={styles.playset} key={index}>
             {playitem}

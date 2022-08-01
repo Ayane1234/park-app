@@ -99,7 +99,6 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    // paddingTop: 70,
   },
   section: {
     width: "100%",

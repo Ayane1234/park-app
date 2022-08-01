@@ -54,8 +54,6 @@ export const Age = () => {
       setBaby(noneBabyFilter);
       setIsBabyFilterActive(false);
     }
-    //   //判定できるもの？propsに渡す？押したよってtrueまたはfalseを渡して、
-    //   //ボタンでスタイルを判定
   };
 
   const childButttonClick = () => {

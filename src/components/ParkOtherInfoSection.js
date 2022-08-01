@@ -1,10 +1,10 @@
 import React from "react";
 
-export const ParkOtherInfoSection = (props) => {
+export const ParkOtherInfoSection = ({ other }) => {
   return (
     <section>
       <div style={styles.sectionTitle}>その他情報</div>
-      <div style={styles.other}>{props.other}</div>
+      <div style={styles.other}>{other}</div>
     </section>
   );
 };

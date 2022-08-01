@@ -2,8 +2,8 @@ import React from "react";
 import BabyGrayIcon from "../img/baby_gray.svg";
 import BabyPinkIcon from "../img/baby_pink.svg";
 
-export const AgeTagBaby = (props) => {
-  const babyTrue = props.data.baby;
+export const AgeTagBaby = ({ data }) => {
+  const babyTrue = data.baby;
 
   return (
     <div style={styles.ageWrapper}>
