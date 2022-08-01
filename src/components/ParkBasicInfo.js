@@ -1,12 +1,11 @@
 import React from "react";
 
-export const ParkBasicInfo = (props) => {
-  console.log("ParkBasicInfoのprops:", props);
+export const ParkBasicInfo = ({ basicInfoData }) => {
   return (
     <div style={styles.ParkBasicInfo}>
-      <div style={styles.parkName}>{props.basicInfoData.name}</div>
-      <div style={styles.address}>{props.basicInfoData.address}</div>
-      <div style={styles.parkSize}>{props.basicInfoData.size}㎡</div>
+      <div style={styles.parkName}>{basicInfoData.name}</div>
+      <div style={styles.address}>{basicInfoData.address}</div>
+      <div style={styles.parkSize}>{basicInfoData.size}㎡</div>
     </div>
   );
 };

@@ -50,7 +50,7 @@ export const Playset = () => {
           ? { ...playsetdata, bool: true }
           : playsetdata
       );
-      console.log("playsetbool", playsetTrueBool);
+
       setPlaysetData(playsetTrueBool);
     } else {
       const noneThisPlayset = playset.filter((data) => data !== newPlayset);

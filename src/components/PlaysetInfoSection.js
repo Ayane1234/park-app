@@ -3,17 +3,16 @@ import { PlaysetTag } from "./PlaysetTag";
 import { AgeTagBaby } from "./AgeTagBaby";
 import { AgeTagChild } from "./AgeTagChild";
 
-export const PlaysetInfoSection = (props) => {
-  console.log("PlaysetInfoSectionのprops:", props);
+export const PlaysetInfoSection = ({ data }) => {
   return (
     <div>
       <section style={styles.playsetWrapper}>
         <div style={styles.sectionTitle}>遊具</div>
-        <PlaysetTag data={props.data} />
+        <PlaysetTag data={data} />
 
         <section style={styles.ageWrapper}>
-          <AgeTagBaby data={props.data} />
-          <AgeTagChild data={props.data} />
+          <AgeTagBaby data={data} />
+          <AgeTagChild data={data} />
         </section>
       </section>
     </div>

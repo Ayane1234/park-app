@@ -7,9 +7,8 @@ import { useLocation } from "react-router-dom";
 
 export const ParkDetailInfo = () => {
   const location = useLocation();
-  console.log("location:", location);
+
   const detailnfo = location.state.info;
-  console.log("detailInfo:", detailnfo);
 
   return (
     <div style={styles.body}>

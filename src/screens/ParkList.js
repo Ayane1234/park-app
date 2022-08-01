@@ -9,9 +9,27 @@ export const ParkList = () => {
   // useStateの初期化
   const [parks, setParks] = useState([]);
   const [areaName, setAreaName] = useState("");
-  const [isAge, setIsAge] = useState(); //要検討
+  const [isAge, setIsAge] = useState([]);
   const [parkName, setParkName] = useState("");
   const [playset, setPlayset] = useState([]);
+
+  //widthの取得
+  const getWidthSize = () => {
+    const width = window.innerWidth;
+
+    return { width };
+  };
+  const [widthSize, setWidthSize] = useState(getWidthSize());
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWidthSize(getWidthSize());
+    }
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   // useNavigateの初期化
   // 公園詳細画面へのルーティングの設定
@@ -23,13 +41,11 @@ export const ParkList = () => {
   // useLocationの初期化
   const location = useLocation();
 
-  // firestoreから全データの取得
-  useEffect(() => {
+  // firestoreから公演データの取得、遷移元の特定する関数
+  const getParkDataFunc = () => {
     const getParkData = collection(db, "ParkDetailData");
     const { dataFilter, screenName } = location.state;
-    console.log("dataFilter:", dataFilter);
 
-    // 関数化する
     getDocs(getParkData).then((snapShot) => {
       const parkDatasList = snapShot.docs.map((doc) => ({
         id: doc.id,
@@ -57,36 +73,7 @@ export const ParkList = () => {
         setPlayset(dataFilter);
       }
     });
-  }, []);
-
-  // 地域フィルター
-  useEffect(() => {
-    const areaFilterData = parks.filter((park) => park.area === areaName);
-    setParks(areaFilterData);
-  }, [areaName]);
-
-  // 年齢フィルター
-  useEffect(() => {
-    const { dataFilter } = location.state;
-    if (dataFilter.includes("baby")) {
-      if (dataFilter.includes("child")) {
-      } else {
-        const babyFilterData = parks.filter((park) => park.baby === true);
-        setParks(babyFilterData);
-      }
-    } else {
-      const childFilterData = parks.filter((park) => park.child === true);
-      setParks(childFilterData);
-    }
-  }, [isAge]);
-
-  // 公園名フィルター
-  useEffect(() => {
-    const parkNameFilterData = parks.filter(
-      (park) => park.name.match(parkName) || park.furigana.match(parkName)
-    );
-    setParks(parkNameFilterData);
-  }, [parkName]);
+  };
 
   const playsetFilterFunc = () => {
     const filter = playset;
@@ -126,12 +113,61 @@ export const ParkList = () => {
 
     setParks(playsetFilterData);
   };
+
+  // 地域フィルター関数
+  const getAreaParkFunc = () => {
+    const areaFilterData = parks.filter((park) => park.area === areaName);
+    setParks(areaFilterData);
+  };
+
+  // 年齢フィルター関数
+  const getAgeParkFunc = () => {
+    const { dataFilter } = location.state;
+    if (dataFilter.includes("baby")) {
+      if (dataFilter.includes("child")) {
+      } else {
+        const babyFilterData = parks.filter((park) => park.baby === true);
+        setParks(babyFilterData);
+      }
+    } else {
+      const childFilterData = parks.filter((park) => park.child === true);
+      setParks(childFilterData);
+    }
+  };
+
+  // 公園名フィルター関数
+  const getParkNameFunc = () => {
+    const parkNameFilterData = parks.filter(
+      (park) => park.name.match(parkName) || park.furigana.match(parkName)
+    );
+    setParks(parkNameFilterData);
+  };
+
+  // firestoreから全データの取得
+  useEffect(() => {
+    getParkDataFunc();
+  }, []);
+
+  // 地域絞り込みの実行
+  useEffect(() => {
+    getAreaParkFunc();
+  }, [areaName]);
+
+  // 年齢絞り込みの実行
+  useEffect(() => {
+    getAgeParkFunc();
+  }, [isAge]);
+
+  // 公園名フィルター
+  useEffect(() => {
+    getParkNameFunc();
+  }, [parkName]);
+
   // 遊具フィルター
   useEffect(() => {
     playsetFilterFunc();
   }, [playset]);
 
-  console.log("parks:", parks);
   return (
     <div style={styles.body}>
       <Header />
@@ -142,7 +178,13 @@ export const ParkList = () => {
       )}
 
       <div style={styles.parkListSectionWrapper}>
-        <section style={styles.parkListSection}>
+        <section
+          style={
+            widthSize.width > 699
+              ? styles.parkListSectionWidth700
+              : styles.parkListSectionWidth699
+          }
+        >
           {parks.length > 0 ? (
             parks.map((park, id) => {
               return (
@@ -152,6 +194,7 @@ export const ParkList = () => {
                     toParkDetailInfo(park);
                   }}
                   key={id}
+                  width={widthSize.width}
                 />
               );
             })
@@ -187,9 +230,16 @@ const styles = {
     justifyContent: "center",
   },
 
-  parkListSection: {
+  parkListSectionWidth699: {
     width: "90%",
-    height: "auto",
+    // height: "auto",
+  },
+
+  parkListSectionWidth700: {
+    width: "90%",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
   },
   amountParkSection: {
     display: "flex",
@@ -197,9 +247,7 @@ const styles = {
     padding: 20,
   },
   amountPark: {
-    // width: "90%",
     fontSize: "20px",
-    // margin: "0 0 0 80%",
   },
   nonePark: {
     width: "300px",
