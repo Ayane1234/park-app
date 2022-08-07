@@ -29,6 +29,25 @@ export const Playset = () => {
     });
   }, []);
 
+  //widthの取得
+  const getHeighSize = () => {
+    const height = window.innerHeight;
+
+    return { height };
+  };
+  const [heightSize, setHeightSize] = useState(getHeighSize());
+
+  console.log("heightSize:", heightSize);
+  useEffect(() => {
+    function handleWindowResize() {
+      setHeightSize(getHeighSize());
+    }
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (playset.length > 0) {
       setIsSearch(true);
@@ -77,7 +96,9 @@ export const Playset = () => {
   return (
     <div style={styles.body}>
       <Header />
-      <section style={styles.section}>
+      <section
+        style={heightSize.height < 800 ? styles.section599 : styles.section600}
+      >
         {playsetData.map((playset, id) => {
           return (
             <PlaysetSearchButton
@@ -99,7 +120,7 @@ export const Playset = () => {
 
 const styles = {
   body: {
-    paddingTop: 40,
+    paddingTop: 50,
     width: "100vw",
     height: "100vh",
     position: "relative",
@@ -107,9 +128,18 @@ const styles = {
     display: "flex",
     justifyContent: "center",
   },
-  section: {
+  section599: {
     maxWidth: "300px",
-    maxHeight: "600px",
+    maxHeight: "500px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    placeItems: "center",
+    columnGap: "10px",
+    rowGap: " 0px",
+  },
+  section600: {
+    maxWidth: "300px",
+    maxHeight: "700px",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     placeItems: "center",

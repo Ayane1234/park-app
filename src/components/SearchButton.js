@@ -14,7 +14,7 @@ export const SearchButton = ({ onClick, isSearch }) => {
 const styles = {
   searchButtonTrue: {
     width: "220px",
-    height: "67px",
+    height: "60px",
     margin: "20px",
     backgroundColor: "#D4DFBB",
     display: "flex",
@@ -23,11 +23,11 @@ const styles = {
     position: "fixed",
     borderRadius: "30px",
     fontSize: "18px",
-    bottom: 30,
+    bottom: 10,
   },
   searchButtonFalse: {
     width: "220px",
-    height: "67px",
+    height: "60px",
     margin: "20px",
     backgroundColor: "#dcdcdc",
     color: "white",
@@ -37,6 +37,6 @@ const styles = {
     position: "fixed",
     borderRadius: "30px",
     fontSize: "18px",
-    bottom: 30,
+    bottom: "1%",
   },
 };

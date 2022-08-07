@@ -8,7 +8,7 @@ export const Home = () => {
   const navigate = useNavigate();
   return (
     <div style={styles.body}>
-      <img src={Circle} style={styles.img} />
+      <img src={Circle} style={styles.img} alt={"雲"} />
       <div>
         <section style={styles.section}>
           <SearchItemButton
@@ -45,7 +45,7 @@ export const Home = () => {
           />
         </section>
       </div>
-      <img src={Circle2} style={styles.img2} />
+      <img src={Circle2} style={styles.img2} alt={"雲"} />
     </div>
   );
 };
@@ -64,16 +64,17 @@ const styles = {
     height: "auto",
     display: "flex",
     justifyContent: "center",
+    zIndex: 1,
   },
 
   img: {
     position: "fixed",
-    right: "-25%",
-    top: "-25%",
+    right: "-40%",
+    top: "-40%",
   },
   img2: {
     position: "fixed",
-    bottom: "-20%",
+    bottom: "-40%",
     left: "-40%",
   },
 };

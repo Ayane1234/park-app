@@ -102,7 +102,7 @@ const styles = {
   },
   section: {
     width: "100%",
-    height: "auto",
+    height: "80%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
