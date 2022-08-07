@@ -110,7 +110,7 @@ const styles = {
     top: 50,
   },
   wrapper: {
-    height: "90%",
+    height: "80%",
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",

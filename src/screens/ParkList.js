@@ -146,26 +146,31 @@ export const ParkList = () => {
   // firestoreから全データの取得
   useEffect(() => {
     getParkDataFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 地域絞り込みの実行
   useEffect(() => {
     getAreaParkFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [areaName]);
 
   // 年齢絞り込みの実行
   useEffect(() => {
     getAgeParkFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAge]);
 
   // 公園名フィルター
   useEffect(() => {
     getParkNameFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parkName]);
 
   // 遊具フィルター
   useEffect(() => {
     playsetFilterFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playset]);
 
   return (

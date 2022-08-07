@@ -19,8 +19,8 @@ export const PlaysetSearchButton = ({ text1, text2, onClick, bool, value }) => {
 
 const styles = {
   PlaysetSearchButtonFalse: {
-    width: "100px",
-    height: "100px",
+    width: "90px",
+    height: "90px",
     backgroundColor: "white",
     display: "flex",
     alignItems: "center",
@@ -31,11 +31,11 @@ const styles = {
   text: {
     position: "absolute",
     textAlign: "center",
-    fontSize: "16px",
+    fontSize: "13px",
   },
   PlaysetSearchButtonTrue: {
-    width: "100px",
-    height: "100px",
+    width: "90px",
+    height: "90px",
     backgroundColor: "#e4af9b",
     display: "flex",
     alignItems: "center",
