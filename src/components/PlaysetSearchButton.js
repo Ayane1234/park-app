@@ -21,6 +21,7 @@ const styles = {
   PlaysetSearchButtonFalse: {
     width: "90px",
     height: "90px",
+    margin: "5px",
     backgroundColor: "white",
     display: "flex",
     alignItems: "center",
@@ -36,6 +37,7 @@ const styles = {
   PlaysetSearchButtonTrue: {
     width: "90px",
     height: "90px",
+    margin: "5px",
     backgroundColor: "#e4af9b",
     display: "flex",
     alignItems: "center",
