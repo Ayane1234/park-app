@@ -29,7 +29,7 @@ export const Playset = () => {
     });
   }, []);
 
-  //widthの取得
+  //heightの取得
   const getHeighSize = () => {
     const height = window.innerHeight;
 
@@ -38,6 +38,7 @@ export const Playset = () => {
   const [heightSize, setHeightSize] = useState(getHeighSize());
 
   console.log("heightSize:", heightSize);
+
   useEffect(() => {
     function handleWindowResize() {
       setHeightSize(getHeighSize());
@@ -97,7 +98,7 @@ export const Playset = () => {
     <div style={styles.body}>
       <Header />
       <section
-        style={heightSize.height < 800 ? styles.section599 : styles.section600}
+        style={heightSize.height < 700 ? styles.section450 : styles.section600}
       >
         {playsetData.map((playset, id) => {
           return (
@@ -127,10 +128,13 @@ const styles = {
     backgroundColor: "#f3eed5",
     display: "flex",
     justifyContent: "center",
+    // alignItems: "center",
   },
-  section599: {
+  section450: {
     maxWidth: "300px",
-    maxHeight: "500px",
+    maxHeight: "450px",
+    // display: "flex",
+    // flexWrap: "wrap",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     placeItems: "center",
@@ -139,7 +143,7 @@ const styles = {
   },
   section600: {
     maxWidth: "300px",
-    maxHeight: "700px",
+    maxHeight: "600px",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     placeItems: "center",
