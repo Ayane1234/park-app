@@ -98,7 +98,7 @@ export const Playset = () => {
     <div style={styles.body}>
       <Header />
       <section
-        style={heightSize.height < 700 ? styles.section450 : styles.section600}
+        style={heightSize.height < 700 ? styles.section400 : styles.section600}
       >
         {playsetData.map((playset, id) => {
           return (
@@ -130,16 +130,16 @@ const styles = {
     justifyContent: "center",
     // alignItems: "center",
   },
-  section450: {
+  section400: {
     maxWidth: "300px",
     maxHeight: "400px",
     // display: "flex",
     // flexWrap: "wrap",
-    // display: "grid",
-    // gridTemplateColumns: "1fr 1fr",
-    // placeItems: "center",
-    // columnGap: "10px",
-    // rowGap: " 0px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    placeItems: "center",
+    columnGap: "10px",
+    rowGap: " 0px",
   },
   section600: {
     maxWidth: "300px",
