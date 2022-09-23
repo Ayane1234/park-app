@@ -132,7 +132,7 @@ const styles = {
   },
   section450: {
     maxWidth: "300px",
-    maxHeight: "450px",
+    maxHeight: "400px",
     // display: "flex",
     // flexWrap: "wrap",
     display: "grid",
