@@ -231,8 +231,13 @@ export const ParkList = () => {
     <div style={styles.body}>
       <Header />
       {parks.length > 0 && (
-        <section style={styles.amountParkSection}>
-          <div style={styles.amountPark}>検索結果　{parks.length}件</div>
+        <section>
+          <div style={styles.amountParkSection}>
+            <div style={styles.amountPark}>検索結果　{parks.length}件</div>
+          </div>
+          <div style={styles.infoForDetail}>
+            公園の詳細情報はカードをタップしてください
+          </div>
         </section>
       )}
 
@@ -303,10 +308,17 @@ const styles = {
   amountParkSection: {
     display: "flex",
     justifyContent: "flex-end",
-    padding: 20,
+    padding: 10,
   },
   amountPark: {
     fontSize: "20px",
+  },
+  infoForDetail: {
+    display: "flex",
+    justifyContent: "flex-end",
+    padding: " 0px 10px 10px 0px",
+    fontSize: "13px",
+    color: "gray",
   },
   nonePark: {
     width: "300px",
