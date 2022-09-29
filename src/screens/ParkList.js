@@ -170,7 +170,7 @@ export const ParkList = () => {
 
   // 地域フィルター関数
   const getAreaParkFunc = () => {
-    const areaFilterData = parks.filter((park) => park.area === areaName);
+    const areaFilterData = allData.filter((park) => park.area === areaName);
     setParks(areaFilterData);
   };
 
@@ -180,18 +180,18 @@ export const ParkList = () => {
     if (dataFilter.includes("baby")) {
       if (dataFilter.includes("child")) {
       } else {
-        const babyFilterData = parks.filter((park) => park.baby === true);
+        const babyFilterData = allData.filter((park) => park.baby === true);
         setParks(babyFilterData);
       }
     } else {
-      const childFilterData = parks.filter((park) => park.child === true);
+      const childFilterData = allData.filter((park) => park.child === true);
       setParks(childFilterData);
     }
   };
 
   // 公園名フィルター関数
   const getParkNameFunc = () => {
-    const parkNameFilterData = parks.filter(
+    const parkNameFilterData = allData.filter(
       (park) => park.name.match(parkName) || park.furigana.match(parkName)
     );
     setParks(parkNameFilterData);
