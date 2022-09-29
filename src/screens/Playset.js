@@ -37,7 +37,7 @@ export const Playset = () => {
   };
   const [heightSize, setHeightSize] = useState(getHeighSize());
 
-  console.log("heightSize:", heightSize);
+  // console.log("heightSize:", heightSize);
 
   useEffect(() => {
     function handleWindowResize() {

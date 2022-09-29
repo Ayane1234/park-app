@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { Header } from "../components/Header";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
 import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { formControlClasses } from "@mui/material";
 
 export const ParkList = () => {
   // useStateの初期化
   const [parks, setParks] = useState([]);
+  const [allData, setAllData] = useState([]);
   const [areaName, setAreaName] = useState("");
   const [isAge, setIsAge] = useState([]);
   const [parkName, setParkName] = useState("");
   const [playset, setPlayset] = useState([]);
-
+  const [flag, setFlag] = useState(false);
+  // const [parksLength, setParksLength] = useState("0");
+  // console.log("parks:", parks);
+  let firestore = [];
   //widthの取得
   const getWidthSize = () => {
     const width = window.innerWidth;
@@ -42,6 +47,7 @@ export const ParkList = () => {
   const location = useLocation();
 
   // firestoreから公演データの取得、遷移元の特定する関数
+
   const getParkDataFunc = () => {
     const getParkData = collection(db, "ParkDetailData");
     const { dataFilter, screenName } = location.state;
@@ -51,7 +57,8 @@ export const ParkList = () => {
         id: doc.id,
         ...doc.data(),
       }));
-      setParks(parkDatasList);
+
+      setAllData(parkDatasList);
 
       if (screenName === "地域絞り込み") {
         if (dataFilter === "大森" || "蒲田・羽田" || "調布") {
@@ -72,18 +79,21 @@ export const ParkList = () => {
       if (screenName === "遊具絞り込み") {
         setPlayset(dataFilter);
       }
+      // console.log("全件取得関数内のparkDatasList:", parkDatasList);
+      // return parkDatasList;
     });
   };
 
+  // 遊具絞り込み
   const playsetFilterFunc = () => {
     const filter = playset;
 
-    const allPlaysetData = parks.map((park) => {
+    const allPlaysetData = allData.map((data) => {
       // フィルターとparkをまとめる
-      const arrs = [filter, park.playset];
+      const arrs = [filter, data.playset];
 
       // フィルターとparkをconcatnateする
-      const arrsConcat = filter.concat(park.playset);
+      const arrsConcat = filter.concat(data.playset);
 
       // 重複をなくす
       const chofuku = arrsConcat.filter(function (value, index, array) {
@@ -104,14 +114,58 @@ export const ParkList = () => {
       // trueだったら、parkをリターンする
 
       if (JSON.stringify(filter) === JSON.stringify(result)) {
-        return park;
+        return data;
       } else {
         return false;
       }
     });
-    const playsetFilterData = allPlaysetData.filter((park) => park !== false);
+    const playsetFilterData = allPlaysetData.filter((data) => data !== false);
 
     setParks(playsetFilterData);
+    setFlag(true);
+    //   const filter = playset;
+
+    //   const allPlaysetData = parks.map((park) => {
+    //     // フィルターとparkをまとめる
+    //     const arrs = [filter, park.playset];
+
+    //     // フィルターとparkをconcatnateする
+    //     const arrsConcat = filter.concat(park.playset);
+
+    //     // 重複をなくす
+    //     const chofuku = arrsConcat.filter(function (value, index, array) {
+    //       return array.indexOf(value) === index;
+    //     });
+
+    //     // フィルターにもpark.playsetにも両方ある遊具を絞る
+    //     const result = chofuku.filter(function (val) {
+    //       let samePlayset = true;
+
+    //       arrs.forEach(function (filterAndParkSet, index) {
+    //         samePlayset = filterAndParkSet.indexOf(val) !== -1 && samePlayset;
+    //       });
+    //       return samePlayset;
+    //     });
+
+    //     // filterとresultのJSON.stringfyで比較
+    //     // trueだったら、parkをリターンする
+
+    //     if (JSON.stringify(filter) === JSON.stringify(result)) {
+    //       return park;
+    //     } else {
+    //       return false;
+    //     }
+    //   });
+    //   const playsetFilterData = allPlaysetData.filter((park) => park !== false);
+
+    //   setParks(playsetFilterData);
+    //   setFlag(true);
+    // };
+
+    // // 地域フィルター関数
+    // const getAreaParkFunc = () => {
+    //   const areaFilterData = parks.filter((park) => park.area === areaName);
+    //   setParks(areaFilterData);
   };
 
   // 地域フィルター関数
@@ -190,7 +244,7 @@ export const ParkList = () => {
               : styles.parkListSectionWidth699
           }
         >
-          {parks.length > 0 ? (
+          {flag === true && parks.length > 0 ? (
             parks.map((park, id) => {
               return (
                 <ParkInfoCard
