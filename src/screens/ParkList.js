@@ -15,9 +15,7 @@ export const ParkList = () => {
   const [parkName, setParkName] = useState("");
   const [playset, setPlayset] = useState([]);
   const [flag, setFlag] = useState(false);
-  // const [parksLength, setParksLength] = useState("0");
-  // console.log("parks:", parks);
-  let firestore = [];
+
   //widthの取得
   const getWidthSize = () => {
     const width = window.innerWidth;
@@ -122,52 +120,11 @@ export const ParkList = () => {
     const playsetFilterData = allPlaysetData.filter((data) => data !== false);
 
     setParks(playsetFilterData);
-    setFlag(true);
-    //   const filter = playset;
-
-    //   const allPlaysetData = parks.map((park) => {
-    //     // フィルターとparkをまとめる
-    //     const arrs = [filter, park.playset];
-
-    //     // フィルターとparkをconcatnateする
-    //     const arrsConcat = filter.concat(park.playset);
-
-    //     // 重複をなくす
-    //     const chofuku = arrsConcat.filter(function (value, index, array) {
-    //       return array.indexOf(value) === index;
-    //     });
-
-    //     // フィルターにもpark.playsetにも両方ある遊具を絞る
-    //     const result = chofuku.filter(function (val) {
-    //       let samePlayset = true;
-
-    //       arrs.forEach(function (filterAndParkSet, index) {
-    //         samePlayset = filterAndParkSet.indexOf(val) !== -1 && samePlayset;
-    //       });
-    //       return samePlayset;
-    //     });
-
-    //     // filterとresultのJSON.stringfyで比較
-    //     // trueだったら、parkをリターンする
-
-    //     if (JSON.stringify(filter) === JSON.stringify(result)) {
-    //       return park;
-    //     } else {
-    //       return false;
-    //     }
-    //   });
-    //   const playsetFilterData = allPlaysetData.filter((park) => park !== false);
-
-    //   setParks(playsetFilterData);
-    //   setFlag(true);
-    // };
-
-    // // 地域フィルター関数
-    // const getAreaParkFunc = () => {
-    //   const areaFilterData = parks.filter((park) => park.area === areaName);
-    //   setParks(areaFilterData);
+    console.log("遊具絞り込み関数内のparks.length:", parks.length);
+    parks.length === 0 ? setFlag(false) : setFlag(true);
   };
-
+  console.log("遊具絞り込み関数外のparks.length:", parks.length);
+  console.log("flag:", flag);
   // 地域フィルター関数
   const getAreaParkFunc = () => {
     const areaFilterData = allData.filter((park) => park.area === areaName);
@@ -224,9 +181,13 @@ export const ParkList = () => {
   // 遊具フィルター
   useEffect(() => {
     playsetFilterFunc();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playset]);
 
+  // useEffect(() => {
+  //   parks.length === 0 ? setFlag(false) : setFlag(true);
+  // }, [parks]);
   return (
     <div style={styles.body}>
       <Header />
@@ -249,7 +210,7 @@ export const ParkList = () => {
               : styles.parkListSectionWidth699
           }
         >
-          {flag === true && parks.length > 0 ? (
+          {flag === true ? (
             parks.map((park, id) => {
               return (
                 <ParkInfoCard
