@@ -4,7 +4,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
 import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { formControlClasses } from "@mui/material";
 
 export const ParkList = () => {
   // useStateの初期化
@@ -210,7 +209,7 @@ export const ParkList = () => {
               : styles.parkListSectionWidth699
           }
         >
-          {flag === true ? (
+          {parks.length > 0 ? (
             parks.map((park, id) => {
               return (
                 <ParkInfoCard
