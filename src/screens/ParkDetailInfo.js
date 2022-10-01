@@ -39,7 +39,7 @@ export const ParkDetailInfo = () => {
     <div style={styles.body}>
       <Header />
       <div style={styles.section}>
-        {/* {image && <img src={image} alt="メイン画像" style={styles.mainImage} />} */}
+        {image && <img src={image} alt="メイン画像" style={styles.mainImage} />}
         <ParkBasicInfoSection data={detailnfo} />
         <PlaysetInfoSection data={detailnfo} />
         <ParkOtherInfoSection other={detailnfo.other} />
