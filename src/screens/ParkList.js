@@ -119,11 +119,13 @@ export const ParkList = () => {
     const playsetFilterData = allPlaysetData.filter((data) => data !== false);
 
     setParks(playsetFilterData);
+
     console.log("遊具絞り込み関数内のparks.length:", parks.length);
-    parks.length === 0 ? setFlag(false) : setFlag(true);
+    //
   };
-  console.log("遊具絞り込み関数外のparks.length:", parks.length);
+
   console.log("flag:", flag);
+
   // 地域フィルター関数
   const getAreaParkFunc = () => {
     const areaFilterData = allData.filter((park) => park.area === areaName);
@@ -184,9 +186,11 @@ export const ParkList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playset]);
 
-  // useEffect(() => {
-  //   parks.length === 0 ? setFlag(false) : setFlag(true);
-  // }, [parks]);
+  useEffect(() => {
+    setFlag(true);
+    console.log("useEffectのparks.length:", parks.length);
+  }, [parks]);
+
   return (
     <div style={styles.body}>
       <Header />
@@ -209,28 +213,29 @@ export const ParkList = () => {
               : styles.parkListSectionWidth699
           }
         >
-          {parks.length > 0 ? (
-            parks.map((park, id) => {
-              return (
-                <ParkInfoCard
-                  data={park}
-                  onClick={() => {
-                    toParkDetailInfo(park);
-                  }}
-                  key={id}
-                  width={widthSize.width}
-                />
-              );
-            })
-          ) : (
-            <div style={styles.nonePark}>
-              <p style={styles.text}>
-                お探しの検索条件では、公園はありませんでした。
-                <br></br>
-                新しい検索条件で再検索してみてください。
-              </p>
-            </div>
-          )}
+          {flag === true &&
+            (parks.length > 0 ? (
+              parks.map((park, id) => {
+                return (
+                  <ParkInfoCard
+                    data={park}
+                    onClick={() => {
+                      toParkDetailInfo(park);
+                    }}
+                    key={id}
+                    width={widthSize.width}
+                  />
+                );
+              })
+            ) : (
+              <div style={styles.nonePark}>
+                <p style={styles.text}>
+                  お探しの検索条件では、公園はありませんでした。
+                  <br></br>
+                  新しい検索条件で再検索してみてください。
+                </p>
+              </div>
+            ))}
         </section>
       </div>
     </div>
