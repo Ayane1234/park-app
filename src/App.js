@@ -13,7 +13,6 @@ function App() {
     <div className="park-app">
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<App />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="Playset" element={<Playset />} />
