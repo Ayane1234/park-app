@@ -15,6 +15,7 @@ export const ParkDetailInfo = () => {
 
   const parkId = detailnfo.id;
   console.log("parkId:", parkId);
+
   const getImageFunc = () => {
     const gsReference = ref(
       storage,
@@ -38,7 +39,7 @@ export const ParkDetailInfo = () => {
     <div style={styles.body}>
       <Header />
       <div style={styles.section}>
-        {image && <img src={image} alt="メイン画像" style={styles.main} />}
+        {/* {image && <img src={image} alt="メイン画像" style={styles.mainImage} />} */}
         <ParkBasicInfoSection data={detailnfo} />
         <PlaysetInfoSection data={detailnfo} />
         <ParkOtherInfoSection other={detailnfo.other} />
@@ -70,11 +71,11 @@ const styles = {
 
   section: {
     width: "90%",
-    top: 60,
-    padding: "10px",
+    // top: 60,
+    padding: "0px 10px 0px  10px",
     // position: "absolute",
   },
-  main: {
+  mainImage: {
     width: "100%",
     height: "25%",
   },
