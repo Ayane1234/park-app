@@ -8,7 +8,7 @@ export const Home = () => {
   const navigate = useNavigate();
   return (
     <div style={styles.body}>
-      <img src={Circle} style={styles.img} alt={"雲"} />
+      {/* <img src={Circle} style={styles.img} alt={"雲"} /> */}
       <div>
         <section style={styles.section}>
           <SearchItemButton
@@ -45,7 +45,7 @@ export const Home = () => {
           />
         </section>
       </div>
-      <img src={Circle2} style={styles.img2} alt={"雲"} />
+      {/* <img src={Circle2} style={styles.img2} alt={"雲"} /> */}
     </div>
   );
 };
