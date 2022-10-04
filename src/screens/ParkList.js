@@ -4,10 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
 import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { SettingsInputAntennaTwoTone } from "@mui/icons-material";
 
 export const ParkList = () => {
   // useStateの初期化
-  const [parks, setParks] = useState([]);
+  const [parks, setParks] = useState([1, 2, 3]);
   const [allData, setAllData] = useState([]);
   const [areaName, setAreaName] = useState("");
   const [isAge, setIsAge] = useState([]);
@@ -15,6 +16,7 @@ export const ParkList = () => {
   const [playset, setPlayset] = useState([]);
   const [flag, setFlag] = useState(false);
 
+  console.log("parks.length:", parks.length);
   //widthの取得
   const getWidthSize = () => {
     const width = window.innerWidth;
@@ -76,8 +78,9 @@ export const ParkList = () => {
       if (screenName === "遊具絞り込み") {
         setPlayset(dataFilter);
       }
-      // console.log("全件取得関数内のparkDatasList:", parkDatasList);
+
       // return parkDatasList;
+      // console.log("全件取得関数内のparkDatasList:", parkDatasList);
     });
   };
 
@@ -118,77 +121,77 @@ export const ParkList = () => {
     });
     const playsetFilterData = allPlaysetData.filter((data) => data !== false);
 
+    // return playsetFilterData;
     setParks(playsetFilterData);
-
-    console.log("遊具絞り込み関数内のparks.length:", parks.length);
-    //
   };
 
-  console.log("flag:", flag);
+  // console.log("flag:", flag);
 
-  // 地域フィルター関数
-  const getAreaParkFunc = () => {
-    const areaFilterData = allData.filter((park) => park.area === areaName);
-    setParks(areaFilterData);
-  };
+  // // 地域フィルター関数
+  // const getAreaParkFunc = () => {
+  //   const areaFilterData = allData.filter((park) => park.area === areaName);
+  //   setParks(areaFilterData);
+  // };
 
-  // 年齢フィルター関数
-  const getAgeParkFunc = () => {
-    const { dataFilter } = location.state;
-    if (dataFilter.includes("baby")) {
-      if (dataFilter.includes("child")) {
-      } else {
-        const babyFilterData = allData.filter((park) => park.baby === true);
-        setParks(babyFilterData);
-      }
-    } else {
-      const childFilterData = allData.filter((park) => park.child === true);
-      setParks(childFilterData);
-    }
-  };
+  // // 年齢フィルター関数
+  // const getAgeParkFunc = () => {
+  //   const { dataFilter } = location.state;
+  //   if (dataFilter.includes("baby")) {
+  //     if (dataFilter.includes("child")) {
+  //     } else {
+  //       const babyFilterData = allData.filter((park) => park.baby === true);
+  //       setParks(babyFilterData);
+  //     }
+  //   } else {
+  //     const childFilterData = allData.filter((park) => park.child === true);
+  //     setParks(childFilterData);
+  //   }
+  // };
 
-  // 公園名フィルター関数
-  const getParkNameFunc = () => {
-    const parkNameFilterData = allData.filter(
-      (park) => park.name.match(parkName) || park.furigana.match(parkName)
-    );
-    setParks(parkNameFilterData);
-  };
+  // // 公園名フィルター関数
+  // const getParkNameFunc = () => {
+  //   const parkNameFilterData = allData.filter(
+  //     (park) => park.name.match(parkName) || park.furigana.match(parkName)
+  //   );
+  //   setParks(parkNameFilterData);
+  // };
 
   // firestoreから全データの取得
   useEffect(() => {
     getParkDataFunc();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 地域絞り込みの実行
-  useEffect(() => {
-    getAreaParkFunc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [areaName]);
+  // // 地域絞り込みの実行
+  // useEffect(() => {
+  //   getAreaParkFunc();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [areaName]);
 
-  // 年齢絞り込みの実行
-  useEffect(() => {
-    getAgeParkFunc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAge]);
+  // // 年齢絞り込みの実行
+  // useEffect(() => {
+  //   getAgeParkFunc();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isAge]);
 
-  // 公園名フィルター
-  useEffect(() => {
-    getParkNameFunc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [parkName]);
+  // // 公園名フィルター
+  // useEffect(() => {
+  //   getParkNameFunc();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [parkName]);
 
   // 遊具フィルター
   useEffect(() => {
     playsetFilterFunc();
+    // console.log(test);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playset]);
 
   useEffect(() => {
     setFlag(true);
-    console.log("useEffectのparks.length:", parks.length);
+    // console.log("useEffectのparks.length:", parks.length);
   }, [parks]);
 
   return (
@@ -230,7 +233,8 @@ export const ParkList = () => {
             ) : (
               <div style={styles.nonePark}>
                 <p style={styles.text}>
-                  お探しの検索条件では、公園はありませんでした。
+                  お探しの検索条件では、
+                  <br></br>公園はありませんでした。
                   <br></br>
                   新しい検索条件で再検索してみてください。
                 </p>
