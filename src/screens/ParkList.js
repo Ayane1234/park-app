@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "../components/Header";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ParkInfoCard } from "../components/ParkInfoCard";
@@ -7,14 +7,31 @@ import { collection, getDocs } from "firebase/firestore";
 
 export const ParkList = () => {
   // useStateの初期化
-  const [parks, setParks] = useState([]);
-  const [allData, setAllData] = useState([]);
+  const [parks, setParks] = useState([1, 2, 3]);
+  const initialData = {
+    address: "検索中・・・",
+    area: "検索中・・・",
+    baby: false,
+    child: false,
+    furigana: "けんさくちゅう・・・",
+    id: 12345678,
+    name: "検索中・・・",
+    other: "検索中・・・",
+    playset: ["検索中・・・"],
+    size: 123,
+  };
+
+  const [allData, setAllData] = useState([initialData]);
   const [areaName, setAreaName] = useState("");
   const [isAge, setIsAge] = useState([]);
   const [parkName, setParkName] = useState("");
   const [playset, setPlayset] = useState([]);
   const [flag, setFlag] = useState(false);
 
+  // console.log("allData:", allData);
+  // console.log("isAge:", isAge);
+  // console.log("flag:", flag);
+  // console.log("parks.length:", parks.length);
   //widthの取得
   const getWidthSize = () => {
     const width = window.innerWidth;
@@ -76,8 +93,6 @@ export const ParkList = () => {
       if (screenName === "遊具絞り込み") {
         setPlayset(dataFilter);
       }
-      // console.log("全件取得関数内のparkDatasList:", parkDatasList);
-      // return parkDatasList;
     });
   };
 
@@ -101,7 +116,7 @@ export const ParkList = () => {
       const result = chofuku.filter(function (val) {
         let samePlayset = true;
 
-        arrs.forEach(function (filterAndParkSet, index) {
+        arrs.forEach(function (filterAndParkSet) {
           samePlayset = filterAndParkSet.indexOf(val) !== -1 && samePlayset;
         });
         return samePlayset;
@@ -119,12 +134,7 @@ export const ParkList = () => {
     const playsetFilterData = allPlaysetData.filter((data) => data !== false);
 
     setParks(playsetFilterData);
-
-    console.log("遊具絞り込み関数内のparks.length:", parks.length);
-    //
   };
-
-  console.log("flag:", flag);
 
   // 地域フィルター関数
   const getAreaParkFunc = () => {
@@ -135,13 +145,16 @@ export const ParkList = () => {
   // 年齢フィルター関数
   const getAgeParkFunc = () => {
     const { dataFilter } = location.state;
-    if (dataFilter.includes("baby")) {
-      if (dataFilter.includes("child")) {
-      } else {
-        const babyFilterData = allData.filter((park) => park.baby === true);
-        setParks(babyFilterData);
-      }
-    } else {
+
+    if (dataFilter.includes("baby") && dataFilter.includes("child")) {
+      const babyChildFilterData = allData.filter(
+        (park) => park.child === true && park.baby === true
+      );
+      setParks(babyChildFilterData);
+    } else if (dataFilter.includes("baby")) {
+      const babyFilterData = allData.filter((park) => park.baby === true);
+      setParks(babyFilterData);
+    } else if (dataFilter.includes("child")) {
       const childFilterData = allData.filter((park) => park.child === true);
       setParks(childFilterData);
     }
@@ -158,6 +171,7 @@ export const ParkList = () => {
   // firestoreから全データの取得
   useEffect(() => {
     getParkDataFunc();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -167,13 +181,13 @@ export const ParkList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [areaName]);
 
-  // 年齢絞り込みの実行
+  // // 年齢絞り込みの実行
   useEffect(() => {
     getAgeParkFunc();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAge]);
 
-  // 公園名フィルター
+  // // 公園名フィルター
   useEffect(() => {
     getParkNameFunc();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -188,22 +202,24 @@ export const ParkList = () => {
 
   useEffect(() => {
     setFlag(true);
-    console.log("useEffectのparks.length:", parks.length);
   }, [parks]);
 
   return (
     <div style={styles.body}>
       <Header />
-      {parks.length > 0 && (
-        <section>
-          <div style={styles.amountParkSection}>
-            <div style={styles.amountPark}>検索結果　{parks.length}件</div>
-          </div>
-          <div style={styles.infoForDetail}>
-            公園の詳細情報はカードをタップしてください
-          </div>
-        </section>
-      )}
+      {flag === true &&
+        (parks.length > 0 ? (
+          <section>
+            <div style={styles.amountParkSection}>
+              <div style={styles.amountPark}>検索結果　{parks.length}件</div>
+            </div>
+            <div style={styles.infoForDetail}>
+              公園の詳細情報はカードをタップしてください
+            </div>
+          </section>
+        ) : (
+          <></>
+        ))}
 
       <div style={styles.parkListSectionWrapper}>
         <section
@@ -230,7 +246,8 @@ export const ParkList = () => {
             ) : (
               <div style={styles.nonePark}>
                 <p style={styles.text}>
-                  お探しの検索条件では、公園はありませんでした。
+                  お探しの検索条件では、
+                  <br></br>公園はありませんでした。
                   <br></br>
                   新しい検索条件で再検索してみてください。
                 </p>

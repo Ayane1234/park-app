@@ -14,12 +14,11 @@ export const ParkDetailInfo = () => {
   const detailnfo = location.state.info;
 
   const parkId = detailnfo.id;
-  console.log("parkId:", parkId);
 
   const getImageFunc = () => {
     const gsReference = ref(
       storage,
-      // "gs://park-app-2022.appspot.com/Vm2xdwSaPduEmsn0AcrO_main.jpg"
+
       `gs://park-app-2022.appspot.com/${parkId}_main.jpg`
     );
     getDownloadURL(gsReference)
